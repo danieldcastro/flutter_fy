@@ -12,3 +12,11 @@ Este repositório é uma coleção de widgets e utilitários Flutter que desenvo
 
 Sinta-se à vontade para usar, modificar e contribuir! Se algum componente foi útil para você, deixe uma ⭐ no repositório. 😉  
 
+---
+
+## 🛠 Componentes Disponíveis  
+
+### 🔘 ToggleSlider  
+Um switch animado estilizado, que funciona como um botão deslizante entre dois estados. Ele permite personalização de cores, bordas e widgets internos para um controle mais flexível e visualmente agradável.  
+
+📄 [Leia a documentação](lib/widgets/toggle_slider/README.md)
