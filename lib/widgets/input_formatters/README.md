@@ -71,11 +71,3 @@ class MyApp extends StatelessWidget {
 | `1234`  | `1.234,00`        | `R$ 1.234,00`              |
 | `1000000` | `1.000.000,00`  | `R$ 1.000.000,00`          |
 | `123456789` | `123.456.789,00` | `R$ 123.456.789,00`    |
-
-## 📜 Licença  
-
-Este código é de uso livre. Sinta-se à vontade para usá-lo e modificá-lo conforme necessário. 🚀  
-
----
-
-Se precisar de mais alguma coisa, só avisar! 😃
