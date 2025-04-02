@@ -1,4 +1,4 @@
-name: flutter_utils
+name: flutter_fy
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
@@ -10,6 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  diacritic: ^0.1.6
+  intl: ^0.20.2
+  meta: ^1.15.0
+  mask_text_input_formatter: ^2.9.0
+  lucide_icons_flutter: ^2.0.2
 
 dev_dependencies:
   flutter_test:
