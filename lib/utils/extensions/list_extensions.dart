@@ -10,6 +10,28 @@ extension ListExtensions on List {
   /// print(numbers.isSingle); // Saída: false
   /// ```
   bool get isSingle => length == 1;
+
+  /// Extensão para desserializar uma lista de mapas para uma lista de objetos do tipo `T`.
+  ///
+  /// Essa função converte a lista atual, assumindo que contém mapas (`Map<String, dynamic>`),
+  /// e utiliza a função `fromMap` para transformá-los no tipo desejado.
+  ///
+  /// Exemplo de uso:
+  /// ```dart
+  /// List<Map<String, dynamic>> jsonList = [
+  ///   {'id': 1, 'name': 'Item 1'},
+  ///   {'id': 2, 'name': 'Item 2'}
+  /// ];
+  ///
+  /// List<MyClass> objects = jsonList.deserializeList(MyClass.fromMap);
+  /// ```
+  ///
+  /// Onde `MyClass.fromMap` é um método que converte um `Map<String, dynamic>` em uma instância de `MyClass`.
+  List<T> deserializeList<T>(T Function(Map<String, dynamic>) fromMap) {
+    return List.castFrom<dynamic, Map<String, dynamic>>(this)
+        .map(fromMap)
+        .toList();
+  }
 }
 
 extension ListExtensionsNullable on List? {
