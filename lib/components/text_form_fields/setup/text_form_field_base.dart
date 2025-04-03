@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/validation/fy_validations.dart';
+import 'package:flutter_fy/components/loadings/loading_rotating_dots/fy_loading_rotating_dots.dart';
+import 'package:flutter_fy/utils/fy_responsive_dialog.dart';
+import 'package:flutter_fy/utils/validation/fy_validations.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../bel_modals.dart';
-import '../../../extensions/string_extensions.dart';
-import '../../../result/result.dart';
-import '../../../validation/validations.dart';
-import '../../bel_scrollable_screen.dart';
-import '../../loadings/loading_rotating_dots/bel_loading_rotating_dots.dart';
+import '../../../utils/extensions/string_extensions.dart';
+import '../../../utils/result/result.dart';
+import '../../fy_scroll_view.dart';
 import 'text_form_field_config.dart';
 import 'text_form_field_setup.dart';
 
@@ -167,7 +166,7 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
           (helpTextConfigs?.titleStyle.color?.computeLuminance() ?? 0) > 0.5
               ? Colors.black
               : Colors.white,
-      child: BelScrollableScreen(
+      child: FyScrollView(
         padding: const EdgeInsets.all(45),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -253,7 +252,7 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
                 widget.config.isLoading ?? ValueNotifier<bool>(false),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: BelLoadingRotatingDots(
+              child: FyLoadingRotatingDots(
                   color:
                       widget.config.textFormFieldSetup.cursorTextStyle.color ??
                           Colors.black,

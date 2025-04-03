@@ -1,6 +1,6 @@
 # 📌 Decimal Text Input Formatter
 
-O `DecimalTextInputFormatter` é um formatador de entrada para **Flutter** que aplica automaticamente uma máscara para valores numéricos, suportando separadores de milhares e um número variável de casas decimais. Ele também permite a inclusão opcional de um símbolo de moeda.  
+O `FyDecimalTextInputFormatter` é um formatador de entrada para **Flutter** que aplica automaticamente uma máscara para valores numéricos, suportando separadores de milhares e um número variável de casas decimais. Ele também permite a inclusão opcional de um símbolo de moeda.  
 
 ## ✨ Recursos  
 
@@ -11,7 +11,7 @@ O `DecimalTextInputFormatter` é um formatador de entrada para **Flutter** que a
 
 ## 📦 Instalação  
 
-Adicione o `DecimalTextInputFormatter` ao seu projeto e utilize-o no **TextField** do Flutter.  
+Adicione o `FyDecimalTextInputFormatter` ao seu projeto e utilize-o no **TextField** do Flutter.  
 
 ## 🚀 Como Usar  
 
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.number,
             inputFormatters: [
-              DecimalTextInputFormatter(
+              FyDecimalTextInputFormatter(
                 currency: true,
                 currencySymbol: 'R\$',
                 decimalDigits: 2,

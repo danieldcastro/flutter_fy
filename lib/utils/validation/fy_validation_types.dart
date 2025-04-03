@@ -4,8 +4,8 @@ import '../extensions/string_extensions.dart';
 import 'fy_validation_messages.dart';
 import 'fy_validations.dart';
 
-class ValidationTypes {
-  ValidationTypes._();
+class FyValidationTypes {
+  FyValidationTypes._();
 
   static List<String? Function()> _buildValidatorsList(
     String? value,

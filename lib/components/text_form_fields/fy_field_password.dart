@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../validation/validation_types.dart';
+import '../../utils/validation/fy_validation_types.dart';
 import 'setup/text_form_field_base.dart';
 import 'setup/text_form_field_config.dart';
 
-class BelFieldPassword extends StatefulWidget {
+class FyFieldPassword extends StatefulWidget {
   final int minLength;
   final TextFormFieldConfig config;
 
@@ -13,17 +13,17 @@ class BelFieldPassword extends StatefulWidget {
   ///- Número mínimo de caracteres (passado por parâmetro);
   ///- Se existe espaço em branco no começo ou no fim;
   ///- Regra de criação de senha (Pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial)
-  const BelFieldPassword(
+  const FyFieldPassword(
     this.config, {
     required this.minLength,
     super.key,
   });
 
   @override
-  State<BelFieldPassword> createState() => _BelFieldPasswordState();
+  State<FyFieldPassword> createState() => _FyFieldPasswordState();
 }
 
-class _BelFieldPasswordState extends State<BelFieldPassword> {
+class _FyFieldPasswordState extends State<FyFieldPassword> {
   bool obscureText = true;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _BelFieldPasswordState extends State<BelFieldPassword> {
           child: Icon(obscureText ? Icons.visibility : Icons.visibility_off),
         ),
         obscureText: obscureText,
-        validators: ValidationTypes.password(
+        validators: FyValidationTypes.password(
           widget.config.textFormFieldSetup.validationMessages,
           widget.config.requestValidators,
           widget.minLength,

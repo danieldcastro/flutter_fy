@@ -1,15 +1,15 @@
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import '../../validation/validation_types.dart';
+import '../../utils/validation/fy_validation_types.dart';
 import 'setup/text_form_field_base.dart';
 
-class BelFieldCpf extends TextFormFieldBase {
-  BelFieldCpf(super.config, {super.key})
+class FyFieldCpf extends TextFormFieldBase {
+  FyFieldCpf(super.config, {super.key})
       : super(
             keyboardType: TextInputType.number,
             maxLength: 14,
-            validators: ValidationTypes.cpf(
+            validators: FyValidationTypes.cpf(
               config.textFormFieldSetup.validationMessages,
               config.requestValidators,
             ),

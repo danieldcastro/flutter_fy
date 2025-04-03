@@ -1,15 +1,15 @@
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import '../../validation/validation_types.dart';
+import '../../utils/validation/fy_validation_types.dart';
 import 'setup/text_form_field_base.dart';
 
-class BelFieldDate extends TextFormFieldBase {
+class FyFieldDate extends TextFormFieldBase {
   final bool hasDay;
   final int maxPastYears;
   final int minPastYears;
   final int maxFutureYears;
-  BelFieldDate(
+  FyFieldDate(
     super.config, {
     super.key,
     this.hasDay = true,
@@ -27,7 +27,7 @@ class BelFieldDate extends TextFormFieldBase {
                 },
               ),
             ],
-            validators: ValidationTypes.date(
+            validators: FyValidationTypes.date(
               config.textFormFieldSetup.validationMessages,
               config.requestValidators,
               maxPastYears: maxPastYears,

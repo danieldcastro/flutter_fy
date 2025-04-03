@@ -1,17 +1,17 @@
 import 'package:flutter/services.dart';
 
-import '../../validation/validation_types.dart';
+import '../../utils/validation/fy_validation_types.dart';
 import 'setup/text_form_field_base.dart';
 
-class BelFieldText extends TextFormFieldBase {
-  BelFieldText(
+class FyFieldText extends TextFormFieldBase {
+  FyFieldText(
     super.config, {
     super.maxLength,
     super.key,
   }) : super(
             keyboardType: TextInputType.text,
             textCapitalization: TextCapitalization.sentences,
-            validators: ValidationTypes.onlyRequests(
+            validators: FyValidationTypes.onlyRequests(
               config.requestValidators,
             ));
 }

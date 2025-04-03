@@ -1,10 +1,10 @@
 import 'package:flutter/services.dart';
 
-import '../../validation/validation_types.dart';
+import '../../utils/validation/fy_validation_types.dart';
 import 'setup/text_form_field_base.dart';
 
-class BelFieldName extends TextFormFieldBase {
-  BelFieldName(
+class FyFieldName extends TextFormFieldBase {
+  FyFieldName(
     super.config, {
     super.key,
   }) : super(
@@ -14,7 +14,7 @@ class BelFieldName extends TextFormFieldBase {
                   RegExp(r'[a-zA-Z\sá-úÁ-Úã-õÃ-Õâ-ôÂ-ÔçÇ]'))
             ],
             textCapitalization: TextCapitalization.words,
-            validators: ValidationTypes.onlyRequests(
+            validators: FyValidationTypes.onlyRequests(
               config.requestValidators,
             ));
 }

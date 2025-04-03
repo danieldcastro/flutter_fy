@@ -1,4 +1,6 @@
 class CnpjValidator {
+  CnpjValidator._();
+
   static const List<String> blacklist = [
     '00000000000000',
     '11111111111111',

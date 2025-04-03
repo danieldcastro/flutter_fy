@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/input_formatters/decimal_text_input_formatter.dart';
-import 'package:flutter_fy/enums/fy_locales.dart';
+import 'package:flutter_fy/utils/enums/fy_locales.dart';
+import 'package:flutter_fy/utils/input_formatters/decimal_text_input_formatter/fy_decimal_text_input_formatter.dart';
 
-import '../../validation/validation_types.dart';
+import '../../utils/validation/fy_validation_types.dart';
 import 'setup/text_form_field_base.dart';
 import 'setup/text_form_field_config.dart';
 
-class BelFieldCurrency extends StatefulWidget {
+class FyFieldCurrency extends StatefulWidget {
   final TextFormFieldConfig config;
   final double? numValueMinMatching;
   final double? numValueMaxMatching;
   final FyLocales locale;
+  final int decimalDigits;
   final int maxLength;
 
-  const BelFieldCurrency(
+  const FyFieldCurrency(
     this.config, {
     this.maxLength = 24,
+    this.decimalDigits = 2,
     this.locale = FyLocales.ptBR,
     this.numValueMinMatching,
     this.numValueMaxMatching,
@@ -24,10 +26,10 @@ class BelFieldCurrency extends StatefulWidget {
   });
 
   @override
-  State<BelFieldCurrency> createState() => _BelFieldCurrencyState();
+  State<FyFieldCurrency> createState() => _FyFieldCurrencyState();
 }
 
-class _BelFieldCurrencyState extends State<BelFieldCurrency> {
+class _FyFieldCurrencyState extends State<FyFieldCurrency> {
   late TextEditingController _controller;
 
   @override
@@ -46,7 +48,10 @@ class _BelFieldCurrencyState extends State<BelFieldCurrency> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    if (widget.config.controller == null) {
+      _controller.dispose();
+    }
+    _controller.removeListener(_keepEmpty);
     super.dispose();
   }
 
@@ -65,9 +70,12 @@ class _BelFieldCurrencyState extends State<BelFieldCurrency> {
       ),
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
-        DecimalTextInputFormatter(),
+        FyDecimalTextInputFormatter(
+          currencySymbol: widget.locale.symbol,
+          decimalDigits: widget.decimalDigits,
+        ),
       ],
-      validators: ValidationTypes.currency(
+      validators: FyValidationTypes.currency(
         widget.config.textFormFieldSetup.validationMessages,
         widget.config.requestValidators,
         widget.numValueMinMatching,

@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 
 /// Formata o valor do campo com a máscara 9.999.999.999,00.
 /// Suporta casas decimais dinâmicas e pode exibir um símbolo de moeda opcional.
-class DecimalTextInputFormatter extends TextInputFormatter {
-  DecimalTextInputFormatter({
+class FyDecimalTextInputFormatter extends TextInputFormatter {
+  FyDecimalTextInputFormatter({
     this.currency = false,
     this.currencySymbol = 'R\$',
     this.decimalDigits = 2,

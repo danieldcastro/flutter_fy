@@ -1,29 +1,9 @@
 import 'package:flutter/services.dart';
 
-import '../../validation/validation_types.dart';
-import 'setup/text_form_field_base.dart';
-
-class BelFieldPhoneOrCellphone extends TextFormFieldBase {
-  final bool isCellphone;
-  @override
-  BelFieldPhoneOrCellphone(super.config, {super.key, this.isCellphone = true})
-      : super(
-            keyboardType: TextInputType.number,
-            maxLength: isCellphone ? 15 : 14,
-            inputFormatters: [
-              FilteringTextInputFormatter.digitsOnly,
-              _PhoneFormatter(isCellphone: isCellphone)
-            ],
-            validators: ValidationTypes.phoneCellphone(
-              config.textFormFieldSetup.validationMessages,
-              config.requestValidators,
-            ));
-}
-
-class _PhoneFormatter extends TextInputFormatter {
+class FyPhoneFormatter extends TextInputFormatter {
   final bool isCellphone;
 
-  _PhoneFormatter({
+  FyPhoneFormatter({
     required this.isCellphone,
   });
 
@@ -38,10 +18,8 @@ class _PhoneFormatter extends TextInputFormatter {
       );
     }
 
-    // Remove caracteres não numéricos do novo valor
     String cleanedText = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
 
-    // Aplica a formatação específica para os dois formatos
     if (cleanedText.length <= 10 || !isCellphone) {
       // (00) 0000-0000
       cleanedText = _formatPhoneNumberWithAreaCode(cleanedText);

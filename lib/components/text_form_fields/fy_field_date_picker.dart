@@ -4,14 +4,14 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import 'setup/text_form_field_base.dart';
 
-class BelFieldDatePicker extends TextFormFieldBase {
+class FyFieldDatePicker extends TextFormFieldBase {
   final DateTime firstDate;
   final DateTime lastDate;
   final ValueChanged<DateTime?> onSelectDate;
   final DateTime? initialDate;
   final DatePickerMode initialDatePickerMode;
   final DatePickerEntryMode initialEntryMode;
-  BelFieldDatePicker(
+  FyFieldDatePicker(
     super.config, {
     super.key,
     required this.firstDate,

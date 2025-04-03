@@ -1,16 +1,16 @@
 import 'package:flutter/services.dart';
 
-import '../../validation/validation_types.dart';
+import '../../utils/validation/fy_validation_types.dart';
 import 'setup/text_form_field_base.dart';
 
-class BelFieldEmail extends TextFormFieldBase {
-  BelFieldEmail(
+class FyFieldEmail extends TextFormFieldBase {
+  FyFieldEmail(
     super.config, {
     super.key,
   }) : super(
             keyboardType: TextInputType.emailAddress,
             inputFormatters: [FilteringTextInputFormatter.deny(' ')],
-            validators: ValidationTypes.email(
+            validators: FyValidationTypes.email(
               config.textFormFieldSetup.validationMessages,
               config.requestValidators,
             ));

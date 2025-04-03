@@ -1,5 +1,5 @@
 import 'package:diacritic/diacritic.dart';
-import 'package:flutter_fy/enums/fy_locales.dart';
+import 'package:flutter_fy/utils/enums/fy_locales.dart';
 import 'package:intl/intl.dart';
 
 extension StringExtensions on String {
@@ -315,7 +315,7 @@ extension StringExtensions on String {
   }
 }
 
-extension NullStringExtensions on String? {
+extension StringExtensionsNullable on String? {
   /// Verifica se a string é nula ou vazia.
   /// Exemplo de uso:
   /// ```dart

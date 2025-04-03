@@ -1,4 +1,4 @@
-import 'package:flutter_fy/enums/validation_messages_enum.dart';
+import 'package:flutter_fy/utils/enums/validation_messages_enum.dart';
 
 class FyValidationMessages {
   final Map<ValidationMessagesEnum, String> messages;

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fy/utils/validation/fy_validation_messages.dart';
 
-import '../../../result/result.dart';
-import '../../../validation/validation_messages.dart';
+import '../../../utils/result/result.dart';
 
 class TextFormFieldSetup {
   final bool filled;
   final TextStyle titleStyle;
   final TextStyle cursorTextStyle;
   final Color readOnlyTextColor;
-  final ValidationMessages validationMessages;
+  final FyValidationMessages validationMessages;
   final ({Color iconColor, Result<String, IconData> icon})? helpTextSetup;
   final ValueChanged<String>? onValidationError;
   final Color? enabledFillColor;
@@ -29,7 +29,7 @@ class TextFormFieldSetup {
   TextFormFieldSetup copyWith({
     TextStyle? titleStyle,
     TextStyle? cursorTextStyle,
-    ValidationMessages? validationMessages,
+    FyValidationMessages? validationMessages,
     ({Color iconColor, Result<String, IconData> icon})? helpTextSetup,
     ValueChanged<String>? onValidationError,
     Color? readOnlyTextColor,
