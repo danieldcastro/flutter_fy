@@ -3,7 +3,7 @@ import 'package:flutter_fy/components/modals/side_sheet/config/fy_side_sheet_con
 
 class FySideSheet {
   /// Private method to open the side sheet based on the provided configuration.
-  static Future<dynamic> _open({
+  static Future<T?> _open<T>({
     required Widget body,
     required BuildContext context,
     required FySideSheetConfig config,
@@ -28,7 +28,7 @@ class FySideSheet {
   ///   config: FySideSheetConfig(),
   /// )
   /// ```
-  static Future<dynamic> left({
+  static Future<T?> left<T>({
     required Widget body,
     required BuildContext context,
     FySideSheetConfig config = const FySideSheetConfig(),
@@ -51,7 +51,7 @@ class FySideSheet {
   ///   config: FySideSheetConfig(),
   /// )
   /// ```
-  static Future<dynamic> right({
+  static Future<T?> right<T>({
     required Widget body,
     required BuildContext context,
     FySideSheetConfig config = const FySideSheetConfig(),
@@ -65,7 +65,7 @@ class FySideSheet {
   }
 
   /// Internal method that displays the side sheet based on the provided configuration.
-  static _showSheetSide({
+  static Future<T?> _showSheetSide<T>({
     required Widget body,
     required FySideSheetConfig config,
     required bool rightSide,

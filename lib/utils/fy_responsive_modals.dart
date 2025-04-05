@@ -55,7 +55,7 @@ class _ResponsiveDialog extends StatelessWidget {
   }
 }
 
-void showResponsiveBottomSheet(
+Future<T?> showResponsiveBottomSheet<T>(
   BuildContext context, {
   required Widget child,
   Color? backgroundColor,
@@ -69,7 +69,7 @@ void showResponsiveBottomSheet(
       FySizes.height(context);
 
   if (!FySizes.isLargeScreen(context)) {
-    _showMobileBottomSheet(
+    return _showMobileBottomSheet(
       context,
       child,
       color,
@@ -79,12 +79,12 @@ void showResponsiveBottomSheet(
       args.isDraggable,
     );
   } else {
-    _showSideSheet(
+    return _showSideSheet(
         context, child, color, showCloseButton, isBarrierDismissible);
   }
 }
 
-void _showMobileBottomSheet(
+Future<T?> _showMobileBottomSheet<T>(
   BuildContext context,
   Widget child,
   Color color,
@@ -93,7 +93,7 @@ void _showMobileBottomSheet(
   double bottomHeight,
   bool isDraggable,
 ) {
-  showModalBottomSheet(
+  return showModalBottomSheet(
     isDismissible: barrierDismissible,
     backgroundColor: Colors.transparent,
     context: context,
@@ -144,14 +144,14 @@ void _showMobileBottomSheet(
   );
 }
 
-void _showSideSheet(
+Future<T?> _showSideSheet<T>(
   BuildContext context,
   Widget child,
   Color color,
   bool showCloseButton,
   bool barrierDismissible,
 ) {
-  FySideSheet.right(
+  return FySideSheet.right(
     config: FySideSheetConfig(
       sheetBorderRadius: 10,
       barrierDismissible: barrierDismissible,
