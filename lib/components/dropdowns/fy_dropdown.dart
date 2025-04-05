@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/extensions/string_extensions.dart';
 import '../../utils/validation/fy_validations.dart';
-import 'setup/dropdown_config.dart';
+import 'config/dropdown_config.dart';
 
 class FyDropdown<T> extends StatefulWidget {
   final DropdownConfig<T> config;

@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_fy/utils/input_formatters/phone_input_formatter/fy_phone_input_formatter.dart';
 
 import '../../utils/validation/fy_validation_types.dart';
-import 'setup/text_form_field_base.dart';
+import 'config/text_form_field_base.dart';
 
 class FyFieldPhoneOrCellphone extends TextFormFieldBase {
   final bool isCellphone;

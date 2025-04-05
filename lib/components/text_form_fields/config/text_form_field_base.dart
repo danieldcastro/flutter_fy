@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_fy/components/loadings/loading_rotating_dots/fy_loading_rotating_dots.dart';
-import 'package:flutter_fy/utils/fy_responsive_dialog.dart';
+import 'package:flutter_fy/utils/fy_responsive_modals.dart';
 import 'package:flutter_fy/utils/validation/fy_validations.dart';
 import 'package:flutter_svg/svg.dart';
 

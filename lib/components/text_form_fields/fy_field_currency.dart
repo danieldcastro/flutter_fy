@@ -4,8 +4,8 @@ import 'package:flutter_fy/utils/enums/fy_locales.dart';
 import 'package:flutter_fy/utils/input_formatters/decimal_text_input_formatter/fy_decimal_text_input_formatter.dart';
 
 import '../../utils/validation/fy_validation_types.dart';
-import 'setup/text_form_field_base.dart';
-import 'setup/text_form_field_config.dart';
+import 'config/text_form_field_base.dart';
+import 'config/text_form_field_config.dart';
 
 class FyFieldCurrency extends StatefulWidget {
   final TextFormFieldConfig config;

@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 import '../../utils/validation/fy_validation_types.dart';
-import 'setup/text_form_field_base.dart';
+import 'config/text_form_field_base.dart';
 
 class FyFieldCep extends TextFormFieldBase {
   FyFieldCep(super.config, {super.key})

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import 'setup/text_form_field_base.dart';
+import 'config/text_form_field_base.dart';
 
 class FyFieldDatePicker extends TextFormFieldBase {
   final DateTime firstDate;
