@@ -61,12 +61,16 @@ Future<T?> showResponsiveBottomSheet<T>(
   Color? backgroundColor,
   bool showCloseButton = true,
   bool isBarrierDismissible = true,
-  MobileBottomSheetArgs? mobileArgs,
+  PortraitSheetArgs? portraitArgs,
+  LandscapeSheetArgs? landscapeArgs,
 }) {
   final color = backgroundColor ?? Colors.white;
-  final args = mobileArgs ?? MobileBottomSheetArgs();
-  final bottomHeight = (args.height ?? (FySizes.height(context) * 0.75)) /
-      FySizes.height(context);
+  final localPortraitArgs = portraitArgs ?? PortraitSheetArgs();
+  final localLandscapeArgs = landscapeArgs ?? LandscapeSheetArgs();
+  final bottomSheetHeight =
+      (localPortraitArgs.height ?? (FySizes.height(context) * 0.75)) /
+          FySizes.height(context);
+  final sideSheetWidth = localLandscapeArgs.width ?? FySizes.width(context) / 3;
 
   if (!FySizes.isLargeScreen(context)) {
     return _showMobileBottomSheet(
@@ -75,12 +79,18 @@ Future<T?> showResponsiveBottomSheet<T>(
       color,
       showCloseButton,
       isBarrierDismissible,
-      bottomHeight,
-      args.isDraggable,
+      bottomSheetHeight,
+      localPortraitArgs.isDraggable,
     );
   } else {
     return _showSideSheet(
-        context, child, color, showCloseButton, isBarrierDismissible);
+      context,
+      child,
+      color,
+      showCloseButton,
+      isBarrierDismissible,
+      sideSheetWidth,
+    );
   }
 }
 
@@ -150,13 +160,14 @@ Future<T?> _showSideSheet<T>(
   Color color,
   bool showCloseButton,
   bool barrierDismissible,
+  double? width,
 ) {
   return FySideSheet.right(
     config: FySideSheetConfig(
       sheetBorderRadius: 10,
       barrierDismissible: barrierDismissible,
       sheetColor: color,
-      width: MediaQuery.sizeOf(context).width / 3,
+      width: width,
     ),
     body: FyScrollView(
       padding: EdgeInsets.zero,
@@ -178,8 +189,13 @@ Future<T?> _showSideSheet<T>(
   );
 }
 
-class MobileBottomSheetArgs {
+class PortraitSheetArgs {
   final double? height;
   final bool isDraggable;
-  MobileBottomSheetArgs({this.height, this.isDraggable = true});
+  PortraitSheetArgs({this.height, this.isDraggable = true});
+}
+
+class LandscapeSheetArgs {
+  final double? width;
+  LandscapeSheetArgs({this.width});
 }
