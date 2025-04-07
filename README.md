@@ -1,6 +1,6 @@
-# 📦 Flutter Utils  
+# 📦 FlutterFy  
 
-Bem-vindo ao **Flutter Utils**! 🚀  
+Bem-vindo ao **FlutterFy**! 🚀  
 
 Este repositório é uma coleção de widgets e utilitários Flutter que desenvolvi ao longo do tempo e achei interessantes o suficiente para compartilhar com a comunidade. Aqui você encontrará componentes reutilizáveis, customizáveis e prontos para tornar o desenvolvimento Flutter mais produtivo e elegante.  
 
