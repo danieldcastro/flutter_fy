@@ -12,7 +12,7 @@ class FySideSheetConfig {
   const FySideSheetConfig({
     this.barrierLabel = "Side Sheet",
     this.barrierDismissible = true,
-    this.barrierColor = const Color(0xff66000000),
+    this.barrierColor = const Color(0x66000000),
     this.sheetBorderRadius = 0,
     this.sheetColor = Colors.white,
     this.transitionDuration = const Duration(milliseconds: 300),
