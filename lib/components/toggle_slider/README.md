@@ -1,8 +1,8 @@
-# 📌 ToggleSlider - Componente Flutter 
+# 📌 FyToggleSlider - Componente Flutter 
 
 ## 📖 Descrição
 
-O **ToggleSlider** é um widget personalizável que funciona como um interruptor animado. Ele permite alternar entre dois estados com uma transição suave e pode exibir qualquer widget nos lados esquerdo e direito. Ideal para alternar entre opções como "Ligado/Desligado", "Sim/Não", entre outras.
+O **FyToggleSlider** é um widget personalizável que funciona como um interruptor animado. Ele permite alternar entre dois estados com uma transição suave e pode exibir qualquer widget nos lados esquerdo e direito. Ideal para alternar entre opções como "Ligado/Desligado", "Sim/Não", entre outras.
 
 ## ✨ Recursos
 
@@ -17,7 +17,7 @@ O **ToggleSlider** é um widget personalizável que funciona como um interruptor
 ### 📌 Exemplo Básico
 
 ```dart
-ToggleSlider(
+FyToggleSlider(
   leftWidget: Icon(Icons.light_mode, color: Colors.black),
   rightWidget: Icon(Icons.dark_mode, color: Colors.black),
   onChanged: (value) => print('Novo estado: \$value'),
@@ -28,7 +28,7 @@ ToggleSlider(
 ### 🎨 Exemplo Personalizado
 
 ```dart
-ToggleSlider(
+FyToggleSlider(
   leftWidget: Text('Modo Claro', style: TextStyle(color: Colors.black)),
   rightWidget: Text('Modo Escuro', style: TextStyle(color: Colors.white)),
   onChanged: (value) => print('Selecionado: \$value'),
@@ -42,7 +42,7 @@ ToggleSlider(
 ### 🔒 Exemplo desativado
 
 ```dart
-ToggleSlider(
+FyToggleSlider(
   leftWidget: Icon(Icons.light_mode, color: Colors.black),
   rightWidget: Icon(Icons.dark_mode, color: Colors.black),
   onChanged: null,

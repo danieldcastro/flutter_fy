@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../extensions/string_extensions.dart';
+import '../extensions/string_extensions/string_extensions.dart';
 import 'fy_validation_messages.dart';
 import 'fy_validations.dart';
 

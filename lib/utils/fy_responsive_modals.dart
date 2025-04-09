@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/components/fy_scroll_view.dart';
+import 'package:flutter_fy/components/fy_scroll_view/fy_scroll_view.dart';
 import 'package:flutter_fy/components/modals/side_sheet/config/fy_side_sheet_config.dart';
 import 'package:flutter_fy/components/modals/side_sheet/fy_side_sheet.dart';
 import 'package:flutter_fy/utils/fy_sizes.dart';

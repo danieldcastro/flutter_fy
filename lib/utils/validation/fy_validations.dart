@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../extensions/string_extensions.dart';
+import '../extensions/string_extensions/string_extensions.dart';
 import 'cnpj_validator.dart';
 import 'cpf_validator.dart';
 
