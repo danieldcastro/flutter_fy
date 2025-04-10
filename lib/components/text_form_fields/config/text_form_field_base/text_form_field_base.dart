@@ -281,11 +281,7 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
               Flexible(
                 child: FittedBox(
                   child: SelectionArea(
-                    child: Text(
-                        widget.config.isRequired
-                            ? (widget.config.title ?? '').addAsteriskPrefix
-                            : (widget.config.title ?? ''),
-                        style: titleStyle),
+                    child: Text(widget.config.title ?? '', style: titleStyle),
                   ),
                 ),
               ),
