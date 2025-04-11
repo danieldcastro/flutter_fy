@@ -40,7 +40,6 @@ FyFieldPassword(
 | Propriedade     | Valor                             | Descrição                                                                 |
 | --------------- | --------------------------------- | ------------------------------------------------------------------------- |
 | `keyboardType`  | `TextInputType.visiblePassword`   | Define o teclado padrão para entrada de senhas.                           |
-| `obscureText`   | `bool`                            | Alterna entre exibir ou ocultar a senha digitada.                         |
 | `validators`    | `ValidatorsCallBack`              | Lista de validações padrão e customizadas aplicadas ao campo.            |
 
 ### ✅ Validações Padrão
