@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/utils/validation/fy_validation_messages.dart';
+import 'package:flutter_fy/utils/validation/fy_validation_messages/fy_validation_messages.dart';
 
 import '../../../../utils/result/result.dart';
 

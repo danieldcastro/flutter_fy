@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/validation/fy_validation_messages.dart';
+import '../../../utils/validation/fy_validation_messages/fy_validation_messages.dart';
 
 class FyDropdownSetup {
   final Color disabledColor;

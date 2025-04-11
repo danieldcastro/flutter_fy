@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fy/utils/extensions/list_extensions/list_extensions.dart';
 
 import '../extensions/string_extensions/string_extensions.dart';
-import 'fy_validation_messages.dart';
+import 'fy_validation_messages/fy_validation_messages.dart';
 import 'fy_validations.dart';
 
 class FyValidationTypes {

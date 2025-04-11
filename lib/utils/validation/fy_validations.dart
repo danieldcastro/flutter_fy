@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../extensions/string_extensions/string_extensions.dart';
-import 'cnpj_validator.dart';
-import 'cpf_validator.dart';
+import 'cnpj_validator/cnpj_validator.dart';
+import 'cpf_validator/cpf_validator.dart';
 
 typedef ValidatorsCallBack = List<ValueGetter<String?>> Function(String? value);
 
