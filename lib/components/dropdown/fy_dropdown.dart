@@ -25,8 +25,8 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
   }
 
   String _formattedText(T value) {
-    return widget.config.customItemTextFormat != null
-        ? widget.config.customItemTextFormat!(value)
+    return widget.config.customItemText != null
+        ? widget.config.customItemText!(value)
         : value.toString();
   }
 
@@ -114,20 +114,22 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
                       fillColor: _decoration.fillColor) ??
                   _decoration,
               selectedItemBuilder: (context) => widget.values
-                  .map((e) => Text(
-                        widget.config.customItemTextFormat != null
-                            ? widget.config.customItemTextFormat!(e)
-                            : e.toString(),
-                        overflow: TextOverflow.ellipsis,
-                        style: widget.config.dropdownSetup.valueTextStyle
-                            .copyWith(
-                                color: widget.config.isReadOnly ||
-                                        widget.values.isEmpty
-                                    ? widget
-                                        .config.dropdownSetup.disabledTextColor
-                                    : widget.config.dropdownSetup.valueTextStyle
-                                        .color),
-                      ))
+                  .map((e) => widget.config.customItemWidget != null
+                      ? widget.config.customItemWidget!(e)
+                      : Text(
+                          widget.config.customItemText != null
+                              ? widget.config.customItemText!(e)
+                              : e.toString(),
+                          overflow: TextOverflow.ellipsis,
+                          style: widget.config.dropdownSetup.valueTextStyle
+                              .copyWith(
+                                  color: widget.config.isReadOnly ||
+                                          widget.values.isEmpty
+                                      ? widget.config.dropdownSetup
+                                          .disabledTextColor
+                                      : widget.config.dropdownSetup
+                                          .valueTextStyle.color),
+                        ))
                   .toList(),
               hint: Text(widget.config.hintText ?? '',
                   textAlign: TextAlign.left,
@@ -151,12 +153,15 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
               items: widget.values
                   .map((e) => DropdownMenuItem<T>(
                         value: e,
-                        child: Text(
-                          widget.config.customItemTextFormat != null
-                              ? widget.config.customItemTextFormat!(e)
-                              : e.toString(),
-                          style: widget.config.dropdownSetup.valueTextStyle,
-                        ),
+                        child: widget.config.customItemWidget != null
+                            ? widget.config.customItemWidget!(e)
+                            : Text(
+                                widget.config.customItemText != null
+                                    ? widget.config.customItemText!(e)
+                                    : e.toString(),
+                                style:
+                                    widget.config.dropdownSetup.valueTextStyle,
+                              ),
                       ))
                   .toList(),
               onChanged: widget.config.isReadOnly

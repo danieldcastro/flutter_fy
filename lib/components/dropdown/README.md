@@ -7,7 +7,7 @@ O **FyDropdown** é um widget de _dropdown_ altamente customizável destinado a 
 ## ✨ Recursos
 
 - **Validação integrada:** Permite configurar campos obrigatórios e exibe mensagens de erro personalizadas quando necessário.
-- **Formatação customizada:** Possui suporte à formatação personalizada dos itens, utilizando callbacks para conversão de objetos para `String`.
+- **Formatação customizada:** Possui suporte à formatação personalizada dos itens, utilizando callbacks para conversão de objetos para `String` ou `Widget`.
 - **Aparência customizável:** Permite configurar cores, estilos de texto, ícones e decorações, inclusive para estados desativados.
 - **Gestão de foco:** O widget utiliza um `FocusNode` para gerenciar o foco e validar a seleção quando o usuário sai do campo.
 - **Leve interação via toque:** Controlado por um `DropdownButtonFormField` que responde de maneira intuitiva a interações do usuário.
@@ -70,14 +70,45 @@ class ExemploDropdown extends StatelessWidget {
 }
 ```
 
-### 🎨 Exemplo com Formatação Personalizada
+### 🎨 Exemplo com Formatação Personalizada de String
 
 ```dart
 final dropdownConfigCustom = DropdownConfig<int>(
   dropdownSetup: dropdownSetup,
   title: 'Selecione um número',
   isRequired: true,
-  customItemTextFormat: (value) => "Número $value",
+  customItemText: (value) => "Número $value",
+);
+
+List<int> numeros = [1, 2, 3, 4, 5];
+
+class ExemploDropdownCustom extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: FyDropdown<int>(
+        values: numeros,
+        config: dropdownConfigCustom,
+      ),
+    );
+  }
+}
+```
+
+### 🎨 Exemplo com Formatação Personalizada de Widget
+
+```dart
+final dropdownConfigCustom = DropdownConfig<int>(
+  dropdownSetup: dropdownSetup,
+  title: 'Selecione um número',
+  isRequired: true,
+  customItemWidget: (value) => Container(
+    padding: EdgeInsets.all(8),
+    child: Text(
+      "Número $value",
+      style: TextStyle(fontSize: 16, color: Colors.blue),
+    ),
+  ),
 );
 
 List<int> numeros = [1, 2, 3, 4, 5];
@@ -172,7 +203,7 @@ class MyApp extends StatelessWidget {
     title: 'País',
     isRequired: true,
     // Formata a exibição do Country utilizando o nome e o código
-    customItemTextFormat: (Country country) => "${country.name} (${country.code})",
+    customItemText: (Country country) => "${country.name} (${country.code})",
   );
 
   // Lista de países a serem exibidos no dropdown
@@ -212,7 +243,7 @@ class MyApp extends StatelessWidget {
   O tipo `Country` possui duas propriedades: `name` e `code`. Esse tipo representa um país.
 
 - **Configuração do Dropdown:**  
-  Ao criar a configuração do dropdown (`DropdownConfig<Country>`), foi utilizado o parâmetro `customItemTextFormat` para formatar a apresentação do objeto `Country` na interface, retornando uma string que concatena o nome do país com seu código (por exemplo, "Brasil (BR)").
+  Ao criar a configuração do dropdown (`DropdownConfig<Country>`), foi utilizado o parâmetro `customItemText` para formatar a apresentação do objeto `Country` na interface, retornando uma string que concatena o nome do país com seu código (por exemplo, "Brasil (BR)").
 
 - **Lista de Valores:**  
   É definida uma lista de instâncias do tipo `Country` que serão exibidas no dropdown.
@@ -244,9 +275,13 @@ Esse exemplo demonstra como integrar objetos personalizados em componentes de se
 | `initialValue`           | `T?`                        | Valor inicial a ser selecionado no _dropdown_.                                                            |
 | `menuMaxHeight`          | `double?`                   | Altura máxima do menu aberto do dropdown.                                                                 |
 | `mustSelectItemOnChange` | `bool`                      | Indica se um item deve ser selecionado sempre que ocorrer uma mudança.                                    |
-| `customItemTextFormat`   | `String Function(T value)?` | Função para formatar a exibição dos itens.                                                                |
+| `customItemText`   | `String Function(T value)?` | Função para formatar a exibição dos itens em formato de String.        
+| `customItemWidget`   | `Widget Function(T value)?` | Função para formatar a exibição dos itens em formato de Widget.                                                               |
 | `isReadOnly`             | `bool`                      | Define se o _dropdown_ é somente leitura. (Padrão: `false`)                                               |
 | `isRequired`             | `bool`                      | Define se o campo é obrigatório. Se `true`, será aplicada a validação de valor não nulo. (Padrão: `true`) |
+
+> **Observação:** O parâmetro `customItemText` e `customItemWidget` são mutuamente exclusivos. Se ambos forem fornecidos, haverá um erro de compilação. Utilize apenas um deles para formatar a exibição dos itens no dropdown.
+
 
 ### DropdownSetup
 

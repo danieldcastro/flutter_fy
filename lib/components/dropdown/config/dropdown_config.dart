@@ -10,7 +10,8 @@ class DropdownConfig<T> {
   final T? initialValue;
   final double? menuMaxHeight;
   final bool mustSelectItemOnChange;
-  final String Function(T value)? customItemTextFormat;
+  final String Function(T value)? customItemText;
+  final Widget Function(T value)? customItemWidget;
 
   ///```dart
   ///isReadOnly = false
@@ -33,6 +34,16 @@ class DropdownConfig<T> {
     this.title,
     this.onChanged,
     this.mustSelectItemOnChange = true,
-    this.customItemTextFormat,
-  });
+    this.customItemText,
+    this.customItemWidget,
+  }) {
+    assert(
+      customItemText == null && customItemWidget != null,
+      'customItemText and customItemWidget cannot be used together',
+    );
+    assert(
+      customItemText != null && customItemWidget == null,
+      'customItemText and customItemWidget cannot be used together',
+    );
+  }
 }
