@@ -12,10 +12,16 @@ class FyValidationTypes {
     String? value,
     List<String? Function(String? value)>? requestValidators, [
     List<ValueGetter<String?>>? validators,
+    List<String? Function(String? value)>? customValidators,
   ]) {
     List<ValueGetter<String?>> localValidators = validators ?? [];
     if (requestValidators != null) {
       for (var validator in requestValidators) {
+        localValidators.add(() => validator(value));
+      }
+    }
+    if (customValidators != null) {
+      for (var validator in customValidators) {
         localValidators.add(() => validator(value));
       }
     }
@@ -37,7 +43,7 @@ class FyValidationTypes {
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
     int minLength,
-    List<String? Function()>? customValidators,
+    List<String? Function(String? value)>? customValidators,
   ) {
     return (String? value) => _buildValidatorsList(
           value,
@@ -47,11 +53,10 @@ class FyValidationTypes {
                 FyValidations.min(value, minLength, messages.passwordTooShort),
             () => FyValidations.isTrimmed(
                 value, messages.passwordStartEndsWithSpace),
-            customValidators.isNullOrEmpty
-                ? () =>
-                    FyValidations.isPassword(value, messages.invalidPassword)
-                : () => FyValidations.multiple(customValidators!),
+            if (customValidators.isNullOrEmpty)
+              () => FyValidations.isPassword(value, messages.invalidPassword)
           ],
+          customValidators,
         );
   }
 

@@ -6,7 +6,7 @@ import '../config/text_form_field_config/fy_text_form_field_config.dart';
 
 class FyFieldPassword extends StatefulWidget {
   final int minLength;
-  final List<String? Function()>? customValidators;
+  final List<String? Function(String? value)>? customValidators;
   final FyTextFormFieldConfig config;
 
   ///TextFormField para senha
