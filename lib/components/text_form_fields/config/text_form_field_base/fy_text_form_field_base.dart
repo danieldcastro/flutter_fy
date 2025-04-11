@@ -8,12 +8,12 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../utils/extensions/string_extensions/string_extensions.dart';
 import '../../../../utils/result/result.dart';
 import '../../../fy_scroll_view/fy_scroll_view.dart';
-import '../text_form_field_config/text_form_field_config.dart';
-import '../text_form_field_setup/text_form_field_setup.dart';
+import '../text_form_field_config/fy_text_form_field_config.dart';
+import '../text_form_field_setup/fy_text_form_field_setup.dart';
 
-///Não instancie diretamente TextFormFieldBase. Use algum dos BelFields ou crie um novo.
-class TextFormFieldBase extends StatefulWidget {
-  final TextFormFieldConfig config;
+///Não instancie diretamente FyTextFormFieldBase. Use algum dos BelFields ou crie um novo.
+class FyTextFormFieldBase extends StatefulWidget {
+  final FyTextFormFieldConfig config;
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType keyboardType;
@@ -41,7 +41,7 @@ class TextFormFieldBase extends StatefulWidget {
   ///```
   final bool obscureText;
 
-  const TextFormFieldBase(
+  const FyTextFormFieldBase(
     this.config, {
     super.key,
     this.obscureText = false,
@@ -59,10 +59,10 @@ class TextFormFieldBase extends StatefulWidget {
   });
 
   @override
-  State<TextFormFieldBase> createState() => _TextFormFieldBaseState();
+  State<FyTextFormFieldBase> createState() => _FyTextFormFieldBaseState();
 }
 
-class _TextFormFieldBaseState extends State<TextFormFieldBase> {
+class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
   String? _errorText;
   late FocusNode _focusNode;
   String? _text;
@@ -108,8 +108,8 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
               value ??
                   widget.config.initialValue ??
                   widget.config.controller?.text,
-              widget
-                  .config.textFormFieldSetup.validationMessages.requiredField),
+              widget.config.fyTextFormFieldSetup.validationMessages
+                  .requiredField),
         if (widget.validators != null)
           ...widget.validators!(value ??
               widget.config.initialValue ??
@@ -119,10 +119,11 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
       if (validation.isNullOrEmpty) {
         return null;
       } else {
-        if (widget.config.textFormFieldSetup.onValidationError != null &&
+        if (widget.config.fyTextFormFieldSetup.onValidationError != null &&
             requestFocus) {
           _focusNode.requestFocus();
-          widget.config.textFormFieldSetup.onValidationError!(validation ?? '');
+          widget
+              .config.fyTextFormFieldSetup.onValidationError!(validation ?? '');
         }
         return validation;
       }
@@ -136,29 +137,29 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
                       height: 24,
                       width: 24,
                       colorFilter: ColorFilter.mode(
-                          widget.config.textFormFieldSetup.helpTextSetup
+                          widget.config.fyTextFormFieldSetup.helpTextSetup
                                   ?.iconColor ??
                               Colors.black,
                           BlendMode.srcIn)),
                   false => Image.asset(string,
                       height: 24,
                       width: 24,
-                      color: widget.config.textFormFieldSetup.helpTextSetup
+                      color: widget.config.fyTextFormFieldSetup.helpTextSetup
                               ?.iconColor ??
                           Colors.black),
                 },
             (iconData) => Icon(
                   iconData,
                   size: 24,
-                  color: widget
-                          .config.textFormFieldSetup.helpTextSetup?.iconColor ??
+                  color: widget.config.fyTextFormFieldSetup.helpTextSetup
+                          ?.iconColor ??
                       Colors.black,
                 )) ??
         const SizedBox.shrink();
   }
 
   void _showHelpText() {
-    final helpTextSetup = widget.config.textFormFieldSetup.helpTextSetup;
+    final helpTextSetup = widget.config.fyTextFormFieldSetup.helpTextSetup;
     final helpTextConfigs = widget.config.helpTextConfigs;
     showResponsiveDialog(
       context,
@@ -216,9 +217,9 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
       onFieldSubmitted: widget.config.onFieldSubmitted,
       obscureText: widget.obscureText || widget.config.obscureText,
       obscuringCharacter: widget.config.obscuringCharacter,
-      style: widget.config.textFormFieldSetup.cursorTextStyle.copyWith(
+      style: widget.config.fyTextFormFieldSetup.cursorTextStyle.copyWith(
           color: widget.config.isReadOnly
-              ? widget.config.textFormFieldSetup.readOnlyTextColor
+              ? widget.config.fyTextFormFieldSetup.readOnlyTextColor
               : null),
       buildCounter: (_,
               {required currentLength, required isFocused, maxLength}) =>
@@ -241,17 +242,17 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
           errorText: _errorText,
           hintText: widget.config.hintText,
           filled: widget.config.isReadOnly ||
-              widget.config.textFormFieldSetup.filled,
+              widget.config.fyTextFormFieldSetup.filled,
           fillColor: widget.config.isReadOnly
-              ? widget.config.textFormFieldSetup.readOnlyFillColor
-              : widget.config.textFormFieldSetup.enabledFillColor,
+              ? widget.config.fyTextFormFieldSetup.readOnlyFillColor
+              : widget.config.fyTextFormFieldSetup.enabledFillColor,
           prefix: widget.prefix,
           prefixIcon: widget.prefixIcon,
           suffixIcon: (widget.config.isLoading ?? false)
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   child: FyLoadingRotatingDots(
-                      color: widget.config.textFormFieldSetup.cursorTextStyle
+                      color: widget.config.fyTextFormFieldSetup.cursorTextStyle
                               .color ??
                           Colors.black,
                       size: 25),
@@ -268,8 +269,8 @@ class _TextFormFieldBaseState extends State<TextFormFieldBase> {
 
   @override
   Widget build(BuildContext context) {
-    final TextFormFieldSetup(:titleStyle, :helpTextSetup) =
-        widget.config.textFormFieldSetup;
+    final FyTextFormFieldSetup(:titleStyle, :helpTextSetup) =
+        widget.config.fyTextFormFieldSetup;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

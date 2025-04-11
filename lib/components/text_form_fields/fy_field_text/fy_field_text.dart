@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/text_form_field_base.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
 import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 
-class FyFieldText extends TextFormFieldBase {
+class FyFieldText extends FyTextFormFieldBase {
   FyFieldText(
     super.config, {
     super.maxLength,

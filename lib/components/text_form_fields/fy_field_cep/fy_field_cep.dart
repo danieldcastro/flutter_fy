@@ -1,9 +1,9 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/text_form_field_base.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
 import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class FyFieldCep extends TextFormFieldBase {
+class FyFieldCep extends FyTextFormFieldBase {
   FyFieldCep(super.config, {super.key})
       : super(
             keyboardType: TextInputType.number,
@@ -17,7 +17,7 @@ class FyFieldCep extends TextFormFieldBase {
               ),
             ],
             validators: FyValidationTypes.cep(
-              config.textFormFieldSetup.validationMessages,
+              config.fyTextFormFieldSetup.validationMessages,
               config.requestValidators,
             ));
 }

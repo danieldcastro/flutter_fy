@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/text_form_field_base.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
 import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 
-import '../config/text_form_field_config/text_form_field_config.dart';
+import '../config/text_form_field_config/fy_text_form_field_config.dart';
 
 class FyFieldPassword extends StatefulWidget {
   final int minLength;
-  final TextFormFieldConfig config;
+  final FyTextFormFieldConfig config;
 
   ///TextFormField para senha
   ///Validators:
@@ -27,7 +27,7 @@ class _FyFieldPasswordState extends State<FyFieldPassword> {
   bool obscureText = true;
   @override
   Widget build(BuildContext context) {
-    return TextFormFieldBase(widget.config,
+    return FyTextFormFieldBase(widget.config,
         keyboardType: TextInputType.visiblePassword,
         suffixIcon: InkWell(
           hoverColor: Colors.transparent,
@@ -40,7 +40,7 @@ class _FyFieldPasswordState extends State<FyFieldPassword> {
         ),
         obscureText: obscureText,
         validators: FyValidationTypes.password(
-          widget.config.textFormFieldSetup.validationMessages,
+          widget.config.fyTextFormFieldSetup.validationMessages,
           widget.config.requestValidators,
           widget.minLength,
         ));

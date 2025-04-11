@@ -1,9 +1,9 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/text_form_field_base.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
 import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-class FyFieldDate extends TextFormFieldBase {
+class FyFieldDate extends FyTextFormFieldBase {
   final bool hasDay;
   final int maxPastYears;
   final int minPastYears;
@@ -27,7 +27,7 @@ class FyFieldDate extends TextFormFieldBase {
               ),
             ],
             validators: FyValidationTypes.date(
-              config.textFormFieldSetup.validationMessages,
+              config.fyTextFormFieldSetup.validationMessages,
               config.requestValidators,
               maxPastYears: maxPastYears,
               minPastYears: minPastYears,

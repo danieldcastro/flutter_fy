@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/text_form_field_base.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
 import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 
-class FyFieldEmail extends TextFormFieldBase {
+class FyFieldEmail extends FyTextFormFieldBase {
   FyFieldEmail(
     super.config, {
     super.key,
@@ -10,7 +10,7 @@ class FyFieldEmail extends TextFormFieldBase {
             keyboardType: TextInputType.emailAddress,
             inputFormatters: [FilteringTextInputFormatter.deny(' ')],
             validators: FyValidationTypes.email(
-              config.textFormFieldSetup.validationMessages,
+              config.fyTextFormFieldSetup.validationMessages,
               config.requestValidators,
             ));
 }

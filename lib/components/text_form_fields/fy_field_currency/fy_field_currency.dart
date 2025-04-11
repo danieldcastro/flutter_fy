@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/text_form_field_base.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_config/text_form_field_config.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_config/fy_text_form_field_config.dart';
 import 'package:flutter_fy/utils/enums/fy_locales/fy_locales.dart';
 import 'package:flutter_fy/utils/input_formatters/decimal_text_input_formatter/fy_decimal_text_input_formatter.dart';
 import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 
 class FyFieldCurrency extends StatefulWidget {
-  final TextFormFieldConfig config;
+  final FyTextFormFieldConfig config;
   final double? numValueMinMatching;
   final double? numValueMaxMatching;
   final FyLocales locale;
@@ -56,15 +56,15 @@ class _FyFieldCurrencyState extends State<FyFieldCurrency> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormFieldBase(
+    return FyTextFormFieldBase(
       widget.config.copyWith(controller: _controller),
       maxLength: widget.maxLength,
       keyboardType: TextInputType.number,
       prefix: Text(
         '${widget.locale.symbol} ',
-        style: widget.config.textFormFieldSetup.cursorTextStyle.copyWith(
+        style: widget.config.fyTextFormFieldSetup.cursorTextStyle.copyWith(
             color: widget.config.isReadOnly
-                ? widget.config.textFormFieldSetup.readOnlyTextColor
+                ? widget.config.fyTextFormFieldSetup.readOnlyTextColor
                 : null),
       ),
       inputFormatters: [
@@ -75,7 +75,7 @@ class _FyFieldCurrencyState extends State<FyFieldCurrency> {
         ),
       ],
       validators: FyValidationTypes.currency(
-        widget.config.textFormFieldSetup.validationMessages,
+        widget.config.fyTextFormFieldSetup.validationMessages,
         widget.config.requestValidators,
         widget.numValueMinMatching,
         widget.numValueMaxMatching,

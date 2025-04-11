@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../utils/extensions/string_extensions/string_extensions.dart';
 import '../../utils/validation/fy_validations.dart';
-import 'config/dropdown_config.dart';
+import 'config/fy_dropdown_config.dart';
 
 class FyDropdown<T> extends StatefulWidget {
-  final DropdownConfig<T> config;
+  final FyDropdownConfig<T> config;
   final List<T> values;
   const FyDropdown({super.key, required this.values, required this.config});
 

@@ -3,7 +3,7 @@ import 'package:flutter_fy/utils/validation/fy_validation_messages.dart';
 
 import '../../../../utils/result/result.dart';
 
-class TextFormFieldSetup {
+class FyTextFormFieldSetup {
   final bool filled;
   final TextStyle titleStyle;
   final TextStyle cursorTextStyle;
@@ -14,7 +14,7 @@ class TextFormFieldSetup {
   final Color? enabledFillColor;
   final Color? readOnlyFillColor;
 
-  TextFormFieldSetup({
+  FyTextFormFieldSetup({
     required this.validationMessages,
     required this.titleStyle,
     required this.cursorTextStyle,
@@ -26,7 +26,7 @@ class TextFormFieldSetup {
     this.readOnlyFillColor,
   });
 
-  TextFormFieldSetup copyWith({
+  FyTextFormFieldSetup copyWith({
     TextStyle? titleStyle,
     TextStyle? cursorTextStyle,
     FyValidationMessages? validationMessages,
@@ -37,7 +37,7 @@ class TextFormFieldSetup {
     Color? enabledFillColor,
     Color? readOnlyFillColor,
   }) {
-    return TextFormFieldSetup(
+    return FyTextFormFieldSetup(
       titleStyle: titleStyle ?? this.titleStyle,
       cursorTextStyle: cursorTextStyle ?? this.cursorTextStyle,
       validationMessages: validationMessages ?? this.validationMessages,

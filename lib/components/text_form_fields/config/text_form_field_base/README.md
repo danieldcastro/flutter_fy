@@ -1,4 +1,4 @@
-# 🔠 TextFormFieldBase
+# 🔠 FyTextFormFieldBase
 
 ## 📖 Descrição
 
@@ -9,7 +9,7 @@ Componente base altamente configurável para campos de formulário, usado intern
 
 ## ✨ Recursos
 
-`TextFormFieldBase` é um `StatefulWidget` que encapsula funcionalidades comuns para campos de formulário:
+`FyTextFormFieldBase` é um `StatefulWidget` que encapsula funcionalidades comuns para campos de formulário:
 
 - Integração com `TextFormFieldConfig` para controle de estado, estilo e comportamento.
 - Suporte a validações com múltiplos validadores.
@@ -66,10 +66,10 @@ Ao tocar, será aberto um modal responsivo (`showResponsiveDialog`) com título 
 
 Se `config.isLoading` for um `bool` com valor `true`, o sufixo será substituído por um `FyLoadingRotatingDots` até que o loading termine.
 
-Boa! Aqui vai as **📝 Considerações finais** específicas para o `TextFormFieldBase`:
+Boa! Aqui vai as **📝 Considerações finais** específicas para o `FyTextFormFieldBase`:
 
 
 
 ### 📌 Considerações finais
 
-A `TextFormFieldBase` é a fundação dos campos de entrada no pacote FlutterFy. Ela encapsula validações, controle de foco, estado de carregamento e exibição de dicas contextuais de forma reutilizável e consistente. Seu uso direto é desencorajado — em vez disso, recomenda-se criar componentes específicos derivados dela (como os `BelFields`), garantindo reutilização de lógica e aderência ao design system da aplicação.
+A `FyTextFormFieldBase` é a fundação dos campos de entrada no pacote FlutterFy. Ela encapsula validações, controle de foco, estado de carregamento e exibição de dicas contextuais de forma reutilizável e consistente. Seu uso direto é desencorajado — em vez disso, recomenda-se criar componentes específicos derivados dela (como os `BelFields`), garantindo reutilização de lógica e aderência ao design system da aplicação.

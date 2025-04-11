@@ -1,15 +1,15 @@
-# ⚙️ TextFormFieldSetup
+# ⚙️ FyTextFormFieldSetup
 
 ## 📖 Descrição
 
-Classe que define configurações visuais e comportamentais globais para o componente `TextFormFieldBase` e seus derivados.  
+Classe que define configurações visuais e comportamentais globais para o componente `FyTextFormFieldBase` e seus derivados.  
 Pode ser usada para personalizar temas específicos de campos de texto em diferentes contextos da aplicação.
 
 
 
 ## ✨ Recursos
 
-`TextFormFieldSetup` encapsula configurações visuais (estilos, cores, preenchimento) e comportamentais (validações, mensagens de ajuda) aplicadas a um campo de formulário.
+`FyTextFormFieldSetup` encapsula configurações visuais (estilos, cores, preenchimento) e comportamentais (validações, mensagens de ajuda) aplicadas a um campo de formulário.
 
 É frequentemente utilizada em conjunto com `TextFormFieldConfig` para definir como os campos devem se comportar visual e funcionalmente.
 
@@ -47,7 +47,7 @@ Esse botão usará o ícone e a cor definidos e poderá abrir um modal explicati
 ## 🧪 Exemplo de uso
 
 ```dart
-final setup = TextFormFieldSetup(
+final setup = FyTextFormFieldSetup(
   titleStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
   cursorTextStyle: TextStyle(color: Colors.black),
   validationMessages: FyValidationMessages.defaultMessages,
@@ -68,4 +68,4 @@ Claro! Aqui vai a versão das **📝 Considerações finais** em parágrafo úni
 
 ### 📌 Considerações finais
 
-A classe `TextFormFieldSetup` permite padronizar aspectos visuais e comportamentais dos campos de formulário, tornando mais simples aplicar temas e comportamentos consistentes em diferentes contextos da aplicação. Seu uso é recomendado em conjunto com `TextFormFieldConfig` para garantir flexibilidade e coesão na experiência do usuário.
+A classe `FyTextFormFieldSetup` permite padronizar aspectos visuais e comportamentais dos campos de formulário, tornando mais simples aplicar temas e comportamentos consistentes em diferentes contextos da aplicação. Seu uso é recomendado em conjunto com `TextFormFieldConfig` para garantir flexibilidade e coesão na experiência do usuário.

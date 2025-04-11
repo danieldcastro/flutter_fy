@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'dropdown_setup.dart';
+import 'fy_dropdown_setup.dart';
 
-class DropdownConfig<T> {
-  final DropdownSetup dropdownSetup;
+class FyDropdownConfig<T> {
+  final FyDropdownSetup dropdownSetup;
   final String? hintText;
   final String? title;
   final ValueChanged<T?>? onChanged;
@@ -24,7 +24,7 @@ class DropdownConfig<T> {
   ///* Adiciona o validator isNotEmpty()
   final bool isRequired;
 
-  DropdownConfig({
+  FyDropdownConfig({
     required this.dropdownSetup,
     this.menuMaxHeight,
     this.isRequired = true,
@@ -38,11 +38,7 @@ class DropdownConfig<T> {
     this.customItemWidget,
   }) {
     assert(
-      customItemText == null && customItemWidget != null,
-      'customItemText and customItemWidget cannot be used together',
-    );
-    assert(
-      customItemText != null && customItemWidget == null,
+      customItemText != null && customItemWidget != null,
       'customItemText and customItemWidget cannot be used together',
     );
   }

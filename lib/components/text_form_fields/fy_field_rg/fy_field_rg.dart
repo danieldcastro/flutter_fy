@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/text_form_field_base.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
 import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 
-class FyFieldRg extends TextFormFieldBase {
+class FyFieldRg extends FyTextFormFieldBase {
   FyFieldRg(super.config, {super.key})
       : super(
           keyboardType: TextInputType.number,
@@ -11,7 +11,7 @@ class FyFieldRg extends TextFormFieldBase {
             FilteringTextInputFormatter.deny(RegExp(r'[^\w\s]|_'))
           ],
           validators: FyValidationTypes.rg(
-            config.textFormFieldSetup.validationMessages,
+            config.fyTextFormFieldSetup.validationMessages,
             config.requestValidators,
           ),
         );

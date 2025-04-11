@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../text_form_field_setup/text_form_field_setup.dart';
+import '../text_form_field_setup/fy_text_form_field_setup.dart';
 
-class TextFormFieldConfig {
-  final TextFormFieldSetup textFormFieldSetup;
+class FyTextFormFieldConfig {
+  final FyTextFormFieldSetup fyTextFormFieldSetup;
   final String? hintText;
   final String? title;
   final ValueChanged<String>? onChanged;
@@ -55,9 +55,9 @@ class TextFormFieldConfig {
   ///* Adiciona o validator isNotEmpty()
   final bool isRequired;
 
-  TextFormFieldConfig({
+  FyTextFormFieldConfig({
     this.obscuringCharacter = '•',
-    required this.textFormFieldSetup,
+    required this.fyTextFormFieldSetup,
     this.helpTextConfigs,
     this.hintText,
     this.title,
@@ -78,8 +78,8 @@ class TextFormFieldConfig {
     this.onFocusChanged,
   });
 
-  TextFormFieldConfig copyWith({
-    TextFormFieldSetup? textFormFieldSetup,
+  FyTextFormFieldConfig copyWith({
+    FyTextFormFieldSetup? fyTextFormFieldSetup,
     String? hintText,
     String? title,
     String? initialValue,
@@ -105,8 +105,8 @@ class TextFormFieldConfig {
       TextStyle descriptionStyle,
     })? helpTextConfigs,
   }) {
-    return TextFormFieldConfig(
-      textFormFieldSetup: textFormFieldSetup ?? this.textFormFieldSetup,
+    return FyTextFormFieldConfig(
+      fyTextFormFieldSetup: fyTextFormFieldSetup ?? this.fyTextFormFieldSetup,
       hintText: hintText ?? this.hintText,
       title: title ?? this.title,
       initialValue: initialValue ?? this.initialValue,

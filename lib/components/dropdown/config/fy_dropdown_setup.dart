@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utils/validation/fy_validation_messages.dart';
 
-class DropdownSetup {
+class FyDropdownSetup {
   final Color disabledColor;
   final Color disabledTextColor;
   final TextStyle titleStyle;
@@ -17,7 +17,7 @@ class DropdownSetup {
   }) dropDownIconConfigs;
   final InputDecoration? decoration;
 
-  DropdownSetup(
+  FyDropdownSetup(
       {required this.disabledColor,
       required this.disabledTextColor,
       required this.titleStyle,
@@ -28,7 +28,7 @@ class DropdownSetup {
       this.dropdownColor = Colors.white,
       this.decoration});
 
-  DropdownSetup copyWith({
+  FyDropdownSetup copyWith({
     Color? disabledColor,
     Color? disabledTextColor,
     TextStyle? titleStyle,
@@ -43,7 +43,7 @@ class DropdownSetup {
       Color disabledIconColor,
     })? dropDownIconConfigs,
   }) {
-    return DropdownSetup(
+    return FyDropdownSetup(
       disabledColor: disabledColor ?? this.disabledColor,
       disabledTextColor: disabledTextColor ?? this.disabledTextColor,
       titleStyle: titleStyle ?? this.titleStyle,

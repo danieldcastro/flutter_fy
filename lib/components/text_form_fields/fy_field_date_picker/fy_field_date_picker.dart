@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/text_form_field_base.dart';
+import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
 import 'package:intl/intl.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-class FyFieldDatePicker extends TextFormFieldBase {
+class FyFieldDatePicker extends FyTextFormFieldBase {
   final DateTime firstDate;
   final DateTime lastDate;
   final ValueChanged<DateTime?> onSelectDate;
@@ -53,7 +53,7 @@ class FyFieldDatePicker extends TextFormFieldBase {
                 padding: const EdgeInsets.only(right: 16),
                 child: Icon(
                   LucideIcons.calendar,
-                  color: config.textFormFieldSetup.cursorTextStyle.color ??
+                  color: config.fyTextFormFieldSetup.cursorTextStyle.color ??
                       Colors.red,
                 )));
 }

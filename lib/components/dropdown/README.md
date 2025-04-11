@@ -2,7 +2,7 @@
 
 ## 📖 Descrição
 
-O **FyDropdown** é um widget de _dropdown_ altamente customizável destinado a facilitar a seleção de um item em uma lista. Ele integra recursos de validação, formatação personalizada e configurações de estilo que garantem uma experiência consistente, seja em modo de seleção normal ou desabilitado. Esse componente é pensado para ser flexível e atender a diferentes necessidades de exibição e interação, podendo ser configurado através dos parâmetros de **DropdownConfig** e **DropdownSetup**.
+O **FyDropdown** é um widget de _dropdown_ altamente customizável destinado a facilitar a seleção de um item em uma lista. Ele integra recursos de validação, formatação personalizada e configurações de estilo que garantem uma experiência consistente, seja em modo de seleção normal ou desabilitado. Esse componente é pensado para ser flexível e atender a diferentes necessidades de exibição e interação, podendo ser configurado através dos parâmetros de **FyDropdownConfig** e **FyDropdownSetup**.
 
 ## ✨ Recursos
 
@@ -24,7 +24,7 @@ import 'path/para/dropdown_config.dart';
 import 'path/para/dropdown_setup.dart';
 import 'path/para/fy_validation_messages.dart';
 
-final dropdownSetup = DropdownSetup(
+final fyDropdownSetup = FyDropdownSetup(
   disabledColor: Colors.grey,
   disabledTextColor: Colors.white,
   titleStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -42,8 +42,8 @@ final dropdownSetup = DropdownSetup(
   ),
 );
 
-final dropdownConfig = DropdownConfig<String>(
-  dropdownSetup: dropdownSetup,
+final fyDropdownConfig = FyDropdownConfig<String>(
+  fyDropdownSetup: fyDropdownSetup,
   hintText: 'Selecione uma opção',
   title: 'Opção',
   isRequired: true,
@@ -62,7 +62,7 @@ class ExemploDropdown extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: FyDropdown<String>(
           values: opcoes,
-          config: dropdownConfig,
+          config: fyDropdownConfig,
         ),
       ),
     );
@@ -73,8 +73,8 @@ class ExemploDropdown extends StatelessWidget {
 ### 🎨 Exemplo com Formatação Personalizada de String
 
 ```dart
-final dropdownConfigCustom = DropdownConfig<int>(
-  dropdownSetup: dropdownSetup,
+final fyDropdownConfigCustom = FyDropdownConfig<int>(
+  fyDropdownSetup: fyDropdownSetup,
   title: 'Selecione um número',
   isRequired: true,
   customItemText: (value) => "Número $value",
@@ -88,7 +88,7 @@ class ExemploDropdownCustom extends StatelessWidget {
     return Center(
       child: FyDropdown<int>(
         values: numeros,
-        config: dropdownConfigCustom,
+        config: fyDropdownConfigCustom,
       ),
     );
   }
@@ -98,8 +98,8 @@ class ExemploDropdownCustom extends StatelessWidget {
 ### 🎨 Exemplo com Formatação Personalizada de Widget
 
 ```dart
-final dropdownConfigCustom = DropdownConfig<int>(
-  dropdownSetup: dropdownSetup,
+final fyDropdownConfigCustom = FyDropdownConfig<int>(
+  fyDropdownSetup: fyDropdownSetup,
   title: 'Selecione um número',
   isRequired: true,
   customItemWidget: (value) => Container(
@@ -119,7 +119,7 @@ class ExemploDropdownCustom extends StatelessWidget {
     return Center(
       child: FyDropdown<int>(
         values: numeros,
-        config: dropdownConfigCustom,
+        config: fyDropdownConfigCustom,
       ),
     );
   }
@@ -129,8 +129,8 @@ class ExemploDropdownCustom extends StatelessWidget {
 ### 🔒 Exemplo em Modo Somente Leitura
 
 ```dart
-final dropdownConfigReadOnly = DropdownConfig<String>(
-  dropdownSetup: dropdownSetup,
+final fyDropdownConfigReadOnly = FyDropdownConfig<String>(
+  fyDropdownSetup: fyDropdownSetup,
   title: 'Selecione uma opção (read-only)',
   isRequired: true,
   isReadOnly: true,
@@ -143,7 +143,7 @@ class ExemploDropdownReadOnly extends StatelessWidget {
     return Center(
       child: FyDropdown<String>(
         values: ['Opção 1', 'Opção 2'],
-        config: dropdownConfigReadOnly,
+        config: fyDropdownConfigReadOnly,
       ),
     );
   }
@@ -177,8 +177,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // Cria uma instância padrão do DropdownSetup
-  final DropdownSetup dropdownSetup = DropdownSetup(
+  // Cria uma instância padrão do FyDropdownSetup
+  final FyDropdownSetup fyDropdownSetup = FyDropdownSetup(
     disabledColor: Colors.grey,
     disabledTextColor: Colors.white,
     titleStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -196,9 +196,9 @@ class MyApp extends StatelessWidget {
     ),
   );
 
-  // Configuração do DropdownConfig para o tipo Country
-  late final DropdownConfig<Country> dropdownConfig = DropdownConfig<Country>(
-    dropdownSetup: dropdownSetup,
+  // Configuração do FyDropdownConfig para o tipo Country
+  late final FyDropdownConfig<Country> fyDropdownConfig = FyDropdownConfig<Country>(
+    fyDropdownSetup: fyDropdownSetup,
     hintText: 'Selecione um país',
     title: 'País',
     isRequired: true,
@@ -226,7 +226,7 @@ class MyApp extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: FyDropdown<Country>(
             values: countries,
-            config: dropdownConfig,
+            config: fyDropdownConfig,
           ),
         ),
       ),
@@ -243,7 +243,7 @@ class MyApp extends StatelessWidget {
   O tipo `Country` possui duas propriedades: `name` e `code`. Esse tipo representa um país.
 
 - **Configuração do Dropdown:**  
-  Ao criar a configuração do dropdown (`DropdownConfig<Country>`), foi utilizado o parâmetro `customItemText` para formatar a apresentação do objeto `Country` na interface, retornando uma string que concatena o nome do país com seu código (por exemplo, "Brasil (BR)").
+  Ao criar a configuração do dropdown (`FyDropdownConfig<Country>`), foi utilizado o parâmetro `customItemText` para formatar a apresentação do objeto `Country` na interface, retornando uma string que concatena o nome do país com seu código (por exemplo, "Brasil (BR)").
 
 - **Lista de Valores:**  
   É definida uma lista de instâncias do tipo `Country` que serão exibidas no dropdown.
@@ -259,16 +259,16 @@ Esse exemplo demonstra como integrar objetos personalizados em componentes de se
 
 | Parâmetro | Tipo                | Descrição                                                                                       |
 | --------- | ------------------- | ----------------------------------------------------------------------------------------------- |
-| `config`  | `DropdownConfig<T>` | Configurações e customizações do dropdown (inclui estilos, validações, textos e comportamento). |
+| `config`  | `FyDropdownConfig<T>` | Configurações e customizações do dropdown (inclui estilos, validações, textos e comportamento). |
 | `values`  | `List<T>`           | Lista de itens a serem exibidos no _dropdown_.                                                  |
 
 > **Observação:** O widget gerencia o foco para exibir mensagens de erro, chamando o validador quando o campo perde o foco.
 
-### DropdownConfig
+### FyDropdownConfig
 
 | Parâmetro                | Tipo                        | Descrição                                                                                                 |
 | ------------------------ | --------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `dropdownSetup`          | `DropdownSetup`             | Configuração visual e de comportamento do dropdown.                                                       |
+| `fyDropdownSetup`          | `FyDropdownSetup`             | Configuração visual e de comportamento do dropdown.                                                       |
 | `hintText`               | `String?`                   | Texto de dica exibido quando nenhum item é selecionado.                                                   |
 | `title`                  | `String?`                   | Título do campo exibido acima do dropdown.                                                                |
 | `onChanged`              | `ValueChanged<T?>?`         | Callback disparado quando o item selecionado é alterado.                                                  |
@@ -283,7 +283,7 @@ Esse exemplo demonstra como integrar objetos personalizados em componentes de se
 > **Observação:** O parâmetro `customItemText` e `customItemWidget` são mutuamente exclusivos. Se ambos forem fornecidos, haverá um erro de compilação. Utilize apenas um deles para formatar a exibição dos itens no dropdown.
 
 
-### DropdownSetup
+### FyDropdownSetup
 
 | Parâmetro             | Tipo                                                            | Descrição                                                                                  |
 | --------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |

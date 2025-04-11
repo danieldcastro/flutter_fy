@@ -1,8 +1,8 @@
-# ⚙️ TextFormFieldConfig
+# ⚙️ FyTextFormFieldConfig
 
 ## 📖 Descrição
 
-O `TextFormFieldConfig` é uma classe de configuração que centraliza e padroniza os parâmetros para os campos de texto do pacote **FlutterFy**. Ele permite definir comportamentos e estilos dos `TextFormFields` de maneira consistente e reutilizável.
+O `FyTextFormFieldConfig` é uma classe de configuração que centraliza e padroniza os parâmetros para os campos de texto do pacote **FlutterFy**. Ele permite definir comportamentos e estilos dos `TextFormFields` de maneira consistente e reutilizável.
 
 ## ✨ Recursos
 
@@ -14,8 +14,8 @@ O `TextFormFieldConfig` é uma classe de configuração que centraliza e padroni
 ## 🚀 Como Usar
 
 ```dart
-final config = TextFormFieldConfig(
-  textFormFieldSetup: mySetup,
+final config = FyTextFormFieldConfig(
+  fyTextFormFieldSetup: mySetup,
   hintText: 'Digite seu nome',
   title: 'Nome Completo',
   controller: myController,
@@ -26,7 +26,7 @@ final config = TextFormFieldConfig(
 
 | Parâmetro            | Tipo                                                                                      | Descrição                                                 |
 | -------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| `textFormFieldSetup` | `TextFormFieldSetup`                                                                      | Configuração de estilo e comportamento base para o campo. |
+| `fyTextFormFieldSetup` | `FyTextFormFieldSetup`                                                                      | Configuração de estilo e comportamento base para o campo. |
 | `hintText`           | `String?`                                                                                 | Texto de dica que aparece quando o campo está vazio.      |
 | `title`              | `String?`                                                                                 | Título do campo, exibido acima do `TextFormField`.        |
 | `initialValue`       | `String?`                                                                                 | Valor inicial do campo (caso não use `controller`).       |
@@ -51,8 +51,8 @@ final config = TextFormFieldConfig(
 
 ```dart
 FyFieldText(
-  TextFormFieldConfig(
-    textFormFieldSetup: mySetup,
+  FyTextFormFieldConfig(
+    fyTextFormFieldSetup: mySetup,
     title: 'Nome',
     hintText: 'Digite seu nome completo',
     controller: myController,
@@ -62,4 +62,4 @@ FyFieldText(
 
 ## 📌 Considerações Finais
 
-Use o `TextFormFieldConfig` para garantir consistência e flexibilidade em todos os seus campos de texto. Ele centraliza a configuração, facilita manutenção e evita duplicações.
+Use o `FyTextFormFieldConfig` para garantir consistência e flexibilidade em todos os seus campos de texto. Ele centraliza a configuração, facilita manutenção e evita duplicações.
