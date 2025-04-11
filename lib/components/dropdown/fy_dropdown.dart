@@ -54,15 +54,15 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
         if (widget.config.isRequired)
           () => FyValidations.isRequired(
               _formattedText(value ?? widget.config.initialValue!),
-              widget.config.dropdownSetup.validationMessages.requiredField),
+              widget.config.fyDropdownSetup.validationMessages.requiredField),
       ]);
       if (validation.isNullOrEmpty) {
         return null;
       } else {
-        if (widget.config.dropdownSetup.onValidationError != null &&
+        if (widget.config.fyDropdownSetup.onValidationError != null &&
             requestFocus) {
           _focusNode.requestFocus();
-          widget.config.dropdownSetup.onValidationError!(validation ?? '');
+          widget.config.fyDropdownSetup.onValidationError!(validation ?? '');
         }
         return validation;
       }
@@ -74,10 +74,10 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
       hoverColor: Colors.transparent,
       focusColor: Colors.transparent,
       filled: widget.config.isReadOnly ||
-          (widget.config.dropdownSetup.decoration?.filled ?? false),
+          (widget.config.fyDropdownSetup.decoration?.filled ?? false),
       fillColor: widget.config.isReadOnly
-          ? widget.config.dropdownSetup.disabledColor
-          : widget.config.dropdownSetup.decoration?.fillColor);
+          ? widget.config.fyDropdownSetup.disabledColor
+          : widget.config.fyDropdownSetup.decoration?.fillColor);
 
   @override
   void dispose() {
@@ -97,7 +97,7 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
                   widget.config.isRequired
                       ? (widget.config.title ?? '').addAsteriskPrefix
                       : (widget.config.title ?? ''),
-                  style: widget.config.dropdownSetup.titleStyle),
+                  style: widget.config.fyDropdownSetup.titleStyle),
             ),
             const SizedBox(height: 8),
           ],
@@ -106,7 +106,7 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
             child: DropdownButtonFormField<T>(
               focusColor: Colors.transparent,
               focusNode: _focusNode,
-              decoration: widget.config.dropdownSetup.decoration?.copyWith(
+              decoration: widget.config.fyDropdownSetup.decoration?.copyWith(
                       errorText: _decoration.errorText,
                       hoverColor: _decoration.hoverColor,
                       focusColor: _decoration.focusColor,
@@ -121,29 +121,30 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
                               ? widget.config.customItemText!(e)
                               : e.toString(),
                           overflow: TextOverflow.ellipsis,
-                          style: widget.config.dropdownSetup.valueTextStyle
+                          style: widget.config.fyDropdownSetup.valueTextStyle
                               .copyWith(
                                   color: widget.config.isReadOnly ||
                                           widget.values.isEmpty
-                                      ? widget.config.dropdownSetup
+                                      ? widget.config.fyDropdownSetup
                                           .disabledTextColor
-                                      : widget.config.dropdownSetup
+                                      : widget.config.fyDropdownSetup
                                           .valueTextStyle.color),
                         ))
                   .toList(),
               hint: Text(widget.config.hintText ?? '',
                   textAlign: TextAlign.left,
-                  style: widget.config.dropdownSetup.valueTextStyle.copyWith(
-                      color: widget.config.dropdownSetup.disabledTextColor)),
+                  style: widget.config.fyDropdownSetup.valueTextStyle.copyWith(
+                      color: widget.config.fyDropdownSetup.disabledTextColor)),
               icon: Icon(
-                widget.config.dropdownSetup.dropDownIconConfigs.icon,
+                widget.config.fyDropdownSetup.dropDownIconConfigs.icon,
                 color: widget.config.isReadOnly || widget.values.isEmpty
-                    ? widget.config.dropdownSetup.dropDownIconConfigs
+                    ? widget.config.fyDropdownSetup.dropDownIconConfigs
                         .disabledIconColor
-                    : widget.config.dropdownSetup.dropDownIconConfigs.iconColor,
+                    : widget
+                        .config.fyDropdownSetup.dropDownIconConfigs.iconColor,
               ),
-              style: widget.config.dropdownSetup.valueTextStyle,
-              dropdownColor: widget.config.dropdownSetup.dropdownColor,
+              style: widget.config.fyDropdownSetup.valueTextStyle,
+              dropdownColor: widget.config.fyDropdownSetup.dropdownColor,
               value: widget.config.initialValue,
               validator: _validator,
               isDense: true,
@@ -159,8 +160,8 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
                                 widget.config.customItemText != null
                                     ? widget.config.customItemText!(e)
                                     : e.toString(),
-                                style:
-                                    widget.config.dropdownSetup.valueTextStyle,
+                                style: widget
+                                    .config.fyDropdownSetup.valueTextStyle,
                               ),
                       ))
                   .toList(),

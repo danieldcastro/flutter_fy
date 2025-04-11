@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'fy_dropdown_setup.dart';
 
 class FyDropdownConfig<T> {
-  final FyDropdownSetup dropdownSetup;
+  final FyDropdownSetup fyDropdownSetup;
   final String? hintText;
   final String? title;
   final ValueChanged<T?>? onChanged;
@@ -25,7 +25,7 @@ class FyDropdownConfig<T> {
   final bool isRequired;
 
   FyDropdownConfig({
-    required this.dropdownSetup,
+    required this.fyDropdownSetup,
     this.menuMaxHeight,
     this.isRequired = true,
     this.isReadOnly = false,
@@ -38,8 +38,8 @@ class FyDropdownConfig<T> {
     this.customItemWidget,
   }) {
     assert(
-      customItemText != null && customItemWidget != null,
-      'customItemText and customItemWidget cannot be used together',
+      !(customItemText != null && customItemWidget != null),
+      'customItemText e customItemWidget não podem ser usados juntos',
     );
   }
 }
