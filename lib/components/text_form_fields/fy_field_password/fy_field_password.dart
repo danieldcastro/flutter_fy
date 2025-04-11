@@ -26,12 +26,10 @@ class FyFieldPassword extends StatefulWidget {
 }
 
 class _FyFieldPasswordState extends State<FyFieldPassword> {
-  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     return FyTextFormFieldBase(widget.config,
         keyboardType: TextInputType.visiblePassword,
-        obscureText: obscureText,
         validators: FyValidationTypes.password(
           widget.config.fyTextFormFieldSetup.validationMessages,
           widget.config.requestValidators,
