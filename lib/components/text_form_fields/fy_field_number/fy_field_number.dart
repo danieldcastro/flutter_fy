@@ -18,7 +18,10 @@ class FyFieldNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return FyTextFormFieldBase(
-        config,
+        config.copyWith(
+          suffixIcon: suffix,
+          suffixIconMaxWidth: constraints.maxWidth / 2,
+        ),
         keyboardType: TextInputType.number,
         inputFormatters: [
           FilteringTextInputFormatter.deny(' '),
@@ -27,8 +30,6 @@ class FyFieldNumber extends StatelessWidget {
         validators: FyValidationTypes.onlyRequests(
           config.requestValidators,
         ),
-        suffixIcon: suffix,
-        suffixIconMaxWidth: constraints.maxWidth / 2,
       );
     });
   }

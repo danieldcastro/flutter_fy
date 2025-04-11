@@ -17,10 +17,7 @@ class FyTextFormFieldBase extends StatefulWidget {
   final int? maxLength;
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType keyboardType;
-  final Widget? suffixIcon;
-  final double suffixIconMaxWidth;
-  final Widget? prefixIcon;
-  final Widget? prefix;
+
   final Future<DateTime?> Function(BuildContext context)? onTap;
 
   ///* Lista de validators (isNotEmpty() não precisa ser adicionado)
@@ -51,10 +48,6 @@ class FyTextFormFieldBase extends StatefulWidget {
     required this.keyboardType,
     this.maxLength,
     this.maxLines = 1,
-    this.suffixIcon,
-    this.suffixIconMaxWidth = 60,
-    this.prefixIcon,
-    this.prefix,
     this.onTap,
   });
 
@@ -238,7 +231,9 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
       cursorErrorColor: widget.onTap == null ? null : Colors.transparent,
       decoration: InputDecoration(
           suffixIconConstraints:
-              BoxConstraints(maxWidth: widget.suffixIconMaxWidth),
+              BoxConstraints(maxWidth: widget.config.suffixIconMaxWidth),
+          prefixIconConstraints:
+              BoxConstraints(maxWidth: widget.config.prefixIconMaxWidth),
           errorText: _errorText,
           hintText: widget.config.hintText,
           filled: widget.config.isReadOnly ||
@@ -246,8 +241,8 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
           fillColor: widget.config.isReadOnly
               ? widget.config.fyTextFormFieldSetup.readOnlyFillColor
               : widget.config.fyTextFormFieldSetup.enabledFillColor,
-          prefix: widget.prefix,
-          prefixIcon: widget.prefixIcon,
+          prefix: widget.config.prefix,
+          prefixIcon: widget.config.prefixIcon,
           suffixIcon: (widget.config.isLoading ?? false)
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -257,7 +252,7 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
                           Colors.black,
                       size: 25),
                 )
-              : SizedBox.shrink()));
+              : widget.config.suffixIcon ?? SizedBox.shrink()));
 
   @override
   void dispose() {

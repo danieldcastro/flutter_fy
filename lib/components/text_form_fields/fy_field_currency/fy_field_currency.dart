@@ -57,16 +57,18 @@ class _FyFieldCurrencyState extends State<FyFieldCurrency> {
   @override
   Widget build(BuildContext context) {
     return FyTextFormFieldBase(
-      widget.config.copyWith(controller: _controller),
+      widget.config.copyWith(
+        controller: _controller,
+        prefix: Text(
+          '${widget.locale.symbol} ',
+          style: widget.config.fyTextFormFieldSetup.cursorTextStyle.copyWith(
+              color: widget.config.isReadOnly
+                  ? widget.config.fyTextFormFieldSetup.readOnlyTextColor
+                  : null),
+        ),
+      ),
       maxLength: widget.maxLength,
       keyboardType: TextInputType.number,
-      prefix: Text(
-        '${widget.locale.symbol} ',
-        style: widget.config.fyTextFormFieldSetup.cursorTextStyle.copyWith(
-            color: widget.config.isReadOnly
-                ? widget.config.fyTextFormFieldSetup.readOnlyTextColor
-                : null),
-      ),
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         FyDecimalTextInputFormatter(

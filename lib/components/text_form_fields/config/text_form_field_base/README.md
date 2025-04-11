@@ -1,3 +1,4 @@
+
 # 🔠 FyTextFormFieldBase
 
 ## 📖 Descrição
@@ -11,12 +12,13 @@ Componente base altamente configurável para campos de formulário, usado intern
 
 `FyTextFormFieldBase` é um `StatefulWidget` que encapsula funcionalidades comuns para campos de formulário:
 
-- Integração com `TextFormFieldConfig` para controle de estado, estilo e comportamento.
-- Suporte a validações com múltiplos validadores.
-- Ícones de ajuda com modal explicativo.
-- Ícone de carregamento com `FyLoadingRotatingDots`.
-- Foco automático, controle de edição e visibilidade condicional.
-- Customização completa com prefix, suffix e estilização.
+- Integração com `FyTextFormFieldConfig` para controle de estado, estilo e comportamento.
+- Suporte a múltiplas validações customizadas e obrigatoriedade de preenchimento.
+- Ícone de ajuda com abertura de modal explicativo.
+- Ícone de carregamento usando `FyLoadingRotatingDots`.
+- Foco automático e controle de foco com retorno via callback (`onFocusChanged`).
+- Abertura de modais ou seletores ao tocar no campo (`onTap`) com bloqueio de edição direta.
+- Customização completa com `prefix`, `suffix`, preenchimento e estilos dinâmicos.
 
 
 
@@ -24,52 +26,61 @@ Componente base altamente configurável para campos de formulário, usado intern
 
 | Parâmetro            | Tipo                                        | Descrição                                                                                                                                                         |
 | -------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `config`             | `TextFormFieldConfig`                       | Objeto de configuração principal do campo. Veja a documentação do [TextFormFieldConfig](lib/components/text_form_fields/config/text_form_field_config/README.md). |
-| `keyboardType`       | `TextInputType`                             | Define o tipo de teclado.                                                                                                                                         |
-| `maxLength`          | `int?`                                      | Número máximo de caracteres permitidos.                                                                                                                           |
+| `config`             | `FyTextFormFieldConfig`                     | Objeto de configuração principal do campo. Veja a documentação do [TextFormFieldConfig](lib/components/text_form_fields/config/text_form_field_config/README.md). |
+| `keyboardType`       | `TextInputType`                             | Define o tipo de teclado exibido.                                                                                                                                 |
+| `maxLength`          | `int?`                                      | Número máximo de caracteres permitidos no campo. Valor padrão: `255`.                                                                                             |
 | `inputFormatters`    | `List<TextInputFormatter>?`                 | Lista de formatadores aplicados ao valor digitado.                                                                                                                |
-| `suffixIcon`         | `Widget?`                                   | Ícone exibido no lado direito do campo (quando não estiver carregando).                                                                                           |
-| `suffixIconMaxWidth` | `double`                                    | Largura máxima do ícone de sufixo.                                                                                                                                |
-| `prefixIcon`         | `Widget?`                                   | Ícone exibido no lado esquerdo do campo.                                                                                                                          |
-| `prefix`             | `Widget?`                                   | Widget exibido antes do conteúdo do campo.                                                                                                                        |
-| `onTap`              | `Future<DateTime?> Function(BuildContext)?` | Função executada ao tocar no campo (útil para campos com datas ou interações customizadas).                                                                       |
 | `validators`         | `ValidatorsCallBack?`                       | Lista de validadores customizados.                                                                                                                                |
-| `textCapitalization` | `TextCapitalization`                        | Define como o texto será capitalizado.                                                                                                                            |
-| `maxLines`           | `int?`                                      | Número máximo de linhas do campo.                                                                                                                                 |
-| `obscureText`        | `bool`                                      | Define se o texto será oculto (como em senhas).                                                                                                                   |
+| `textCapitalization` | `TextCapitalization`                        | Define como o texto será capitalizado. Valor padrão: `TextCapitalization.none`.                                                                                   |
+| `maxLines`           | `int?`                                      | Número máximo de linhas permitidas. Valor padrão: `1`.                                                                                                            |
+| `obscureText`        | `bool`                                      | Define se o texto será ocultado (útil para senhas). Valor padrão: `false`.                                                                                        |
+| `onTap`              | `Future<DateTime?> Function(BuildContext)?` | Função executada ao tocar no campo. Útil para campos com seleção de data ou comportamento customizado.                                                            |
 
 
 
 ## 🧪 Validação
 
-- Se `isRequired` estiver ativado em `TextFormFieldConfig`, o campo exigirá preenchimento.
+- Quando `isRequired` estiver ativo em `FyTextFormFieldConfig`, o campo exigirá preenchimento.
 - Validações adicionais podem ser passadas por meio do parâmetro `validators`.
-- A validação é automaticamente executada quando o campo perde o foco.
-- Em caso de erro, o foco pode ser solicitado automaticamente com `onValidationError`.
+- A validação é executada automaticamente quando o campo perde o foco.
+- Se ocorrer erro de validação, o campo pode solicitar foco automaticamente e acionar o callback `onValidationError`.
 
 
 
 ## 💡 Ajuda Interativa
 
-Se `helpTextConfigs` estiver presente em `config`, um botão com ícone será exibido ao lado do título.  
-Ao tocar, será aberto um modal responsivo (`showResponsiveDialog`) com título e descrição.
+Se `helpTextConfigs` estiver presente no `config`, será exibido um botão com ícone ao lado do título.  
+Ao tocar nesse botão, será aberto um modal responsivo (`showResponsiveDialog`) com o título e descrição fornecidos.
 
-
-## 🚫 Leitura e Edição
-
-- Quando `isReadOnly` for verdadeiro, o campo será apenas leitura e terá um estilo diferenciado.
-- Se `isEnabled` for falso, o campo será desabilitado (sem interação).
+O ícone pode ser um `IconData`, um asset de imagem comum ou um SVG.  
+A cor do ícone é controlada por `helpTextSetup?.iconColor`.
 
 
 
 ## 🔁 Loading Dinâmico
 
-Se `config.isLoading` for um `bool` com valor `true`, o sufixo será substituído por um `FyLoadingRotatingDots` até que o loading termine.
-
-Boa! Aqui vai as **📝 Considerações finais** específicas para o `FyTextFormFieldBase`:
+Se `config.isLoading == true`, o sufixo do campo será substituído por um `FyLoadingRotatingDots`, indicando carregamento.
 
 
 
-### 📌 Considerações finais
+## 🚫 Leitura e Edição
 
-A `FyTextFormFieldBase` é a fundação dos campos de entrada no pacote FlutterFy. Ela encapsula validações, controle de foco, estado de carregamento e exibição de dicas contextuais de forma reutilizável e consistente. Seu uso direto é desencorajado — em vez disso, recomenda-se criar componentes específicos derivados dela (como os `BelFields`), garantindo reutilização de lógica e aderência ao design system da aplicação.
+- Quando `isReadOnly` for `true`, o campo ficará apenas leitura e exibirá estilo diferenciado (cor de fundo e texto).
+- Quando `isEnabled` for `false`, o campo será totalmente desabilitado.
+- Se `onTap` estiver definido, o campo será tratado como interativo apenas por toque, impedindo entrada direta de texto (`IgnorePointer`).
+
+
+
+## 🎯 Foco e Controle de Estado
+
+- O campo gerencia internamente o `FocusNode`.
+- Se `needsFocus` estiver ativado em `FyTextFormFieldConfig`, o foco será solicitado automaticamente após renderização.
+- Quando o foco muda, o callback `onFocusChanged` é chamado (se definido).
+
+
+## 📌 Considerações finais
+
+`FyTextFormFieldBase` é a fundação de todos os campos personalizados no FlutterFy. Ele centraliza regras de validação, controle de foco, estados de carregamento e exibição contextual de ajuda — permitindo que novos campos sejam construídos com consistência e reaproveitamento de lógica.
+
+> Recomendação: use sempre um campo personalizado derivado de `FyTextFormFieldBase` para manter a padronização visual e comportamental do seu app.
+

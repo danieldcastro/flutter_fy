@@ -6,6 +6,7 @@ import '../config/text_form_field_config/fy_text_form_field_config.dart';
 
 class FyFieldPassword extends StatefulWidget {
   final int minLength;
+  final List<String? Function()>? customValidators;
   final FyTextFormFieldConfig config;
 
   ///TextFormField para senha
@@ -16,6 +17,7 @@ class FyFieldPassword extends StatefulWidget {
   const FyFieldPassword(
     this.config, {
     required this.minLength,
+    this.customValidators,
     super.key,
   });
 
@@ -29,20 +31,12 @@ class _FyFieldPasswordState extends State<FyFieldPassword> {
   Widget build(BuildContext context) {
     return FyTextFormFieldBase(widget.config,
         keyboardType: TextInputType.visiblePassword,
-        suffixIcon: InkWell(
-          hoverColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          onTap: () => setState(() {
-            obscureText = !obscureText;
-          }),
-          child: Icon(obscureText ? Icons.visibility : Icons.visibility_off),
-        ),
         obscureText: obscureText,
         validators: FyValidationTypes.password(
           widget.config.fyTextFormFieldSetup.validationMessages,
           widget.config.requestValidators,
           widget.minLength,
+          widget.customValidators,
         ));
   }
 }

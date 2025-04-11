@@ -21,8 +21,12 @@ class FyTextFormFieldConfig {
     TextStyle titleStyle,
     TextStyle descriptionStyle,
   })? helpTextConfigs;
-
   final String? initialValue;
+  final Widget? suffixIcon;
+  final double suffixIconMaxWidth;
+  final double prefixIconMaxWidth;
+  final Widget? prefixIcon;
+  final Widget? prefix;
 
   ///```dart
   ///obscureText = false
@@ -76,6 +80,11 @@ class FyTextFormFieldConfig {
     this.isLoading,
     this.obscureText = false,
     this.onFocusChanged,
+    this.suffixIcon,
+    this.suffixIconMaxWidth = 60,
+    this.prefixIconMaxWidth = 60,
+    this.prefixIcon,
+    this.prefix,
   });
 
   FyTextFormFieldConfig copyWith({
@@ -104,6 +113,11 @@ class FyTextFormFieldConfig {
       TextStyle titleStyle,
       TextStyle descriptionStyle,
     })? helpTextConfigs,
+    Widget? suffixIcon,
+    double? suffixIconMaxWidth,
+    double? prefixIconMaxWidth,
+    Widget? prefixIcon,
+    Widget? prefix,
   }) {
     return FyTextFormFieldConfig(
       fyTextFormFieldSetup: fyTextFormFieldSetup ?? this.fyTextFormFieldSetup,
@@ -126,6 +140,11 @@ class FyTextFormFieldConfig {
       helpTextConfigs: helpTextConfigs ?? this.helpTextConfigs,
       obscureText: obscureText ?? this.obscureText,
       onFocusChanged: onFocusChanged ?? this.onFocusChanged,
+      suffixIcon: suffixIcon ?? this.suffixIcon,
+      suffixIconMaxWidth: suffixIconMaxWidth ?? this.suffixIconMaxWidth,
+      prefixIconMaxWidth: prefixIconMaxWidth ?? this.prefixIconMaxWidth,
+      prefixIcon: prefixIcon ?? this.prefixIcon,
+      prefix: prefix ?? this.prefix,
     );
   }
 }
