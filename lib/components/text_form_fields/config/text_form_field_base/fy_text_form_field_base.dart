@@ -33,15 +33,9 @@ class FyTextFormFieldBase extends StatefulWidget {
   ///```
   final int? maxLines;
 
-  ///```dart
-  ///obscureText = false
-  ///```
-  final bool obscureText;
-
   const FyTextFormFieldBase(
     this.config, {
     super.key,
-    this.obscureText = false,
     this.textCapitalization = TextCapitalization.none,
     this.validators,
     this.inputFormatters,
@@ -208,7 +202,7 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
       onEditingComplete: widget.config.onEditingComplete,
       onSaved: widget.config.onSaved,
       onFieldSubmitted: widget.config.onFieldSubmitted,
-      obscureText: widget.obscureText || widget.config.obscureText,
+      obscureText: widget.config.obscureText,
       obscuringCharacter: widget.config.obscuringCharacter,
       style: widget.config.fyTextFormFieldSetup.cursorTextStyle.copyWith(
           color: widget.config.isReadOnly
