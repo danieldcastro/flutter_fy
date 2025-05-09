@@ -24,7 +24,8 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
     _focusNode = FocusNode()..addListener(_handleFocusChange);
   }
 
-  String _formattedText(T value) {
+  String? _formattedText(T? value) {
+    if (value == null) return null;
     return widget.config.customItemText != null
         ? widget.config.customItemText!(value)
         : value.toString();
@@ -53,7 +54,7 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
       String? validation = FyValidations.multiple([
         if (widget.config.isRequired)
           () => FyValidations.isRequired(
-              _formattedText(value ?? widget.config.initialValue!),
+              _formattedText(value ?? widget.config.initialValue),
               widget.config.fyDropdownSetup.validationMessages.requiredField),
       ]);
       if (validation.isNullOrEmpty) {
