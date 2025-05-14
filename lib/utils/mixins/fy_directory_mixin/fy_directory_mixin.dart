@@ -25,7 +25,7 @@ import 'package:path_provider/path_provider.dart';
 /// ```
 mixin FyDirectoryMixin {
   /// Retorna o caminho do diretório apropriado para armazenamento na plataforma atual.
-  Future<String?> getDirectory() async {
+  static Future<String?> getDirectory() async {
     String? externalStorageDirPath;
 
     if (FyPlatform.isAndroid) {
