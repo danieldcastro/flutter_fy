@@ -92,16 +92,15 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
       String? validation = FyValidations.multiple([
         if (widget.config.isRequired)
           () => FyValidations.isRequired(
-             value.isNullOrEmpty
-                ? widget.config.initialValue ?? widget.config.controller?.text
-                : value,,
+              value.isNullOrEmpty
+                  ? widget.config.initialValue ?? widget.config.controller?.text
+                  : value,
               widget.config.fyTextFormFieldSetup.validationMessages
                   .requiredField),
         if (widget.validators != null)
-          ...widget.validators!(
-            value.isNullOrEmpty
-                ? widget.config.initialValue ?? widget.config.controller?.text
-                : value)
+          ...widget.validators!(value.isNullOrEmpty
+              ? widget.config.initialValue ?? widget.config.controller?.text
+              : value)
       ]);
 
       if (validation.isNullOrEmpty) {

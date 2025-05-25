@@ -15,7 +15,7 @@ Future<T?> showResponsiveDialog<T>(
   return await showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
-      builder: (_) => PopScope(
+      builder: (context) => PopScope(
             canPop: barrierDismissible,
             child: _ResponsiveDialog(
               backgroundColor: backgroundColor,
@@ -108,7 +108,7 @@ Future<T?> _showMobileBottomSheet<T>(
     backgroundColor: Colors.transparent,
     context: context,
     isScrollControlled: isDraggable,
-    builder: (_) {
+    builder: (context) {
       return TapRegion(
         onTapOutside: (_) {
           if (barrierDismissible) Navigator.pop(context);
