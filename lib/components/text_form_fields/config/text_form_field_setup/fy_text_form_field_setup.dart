@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/utils/validation/fy_validation_messages/fy_validation_messages.dart';
 
 import '../../../../utils/result/result.dart';
+import '../../../../utils/validation/fy_validation_messages/fy_validation_messages.dart';
 
 class FyTextFormFieldSetup {
   final bool filled;
@@ -18,9 +18,8 @@ class FyTextFormFieldSetup {
     required this.validationMessages,
     required this.titleStyle,
     required this.cursorTextStyle,
-    this.helpTextSetup,
+    required this.readOnlyTextColor, this.helpTextSetup,
     this.onValidationError,
-    required this.readOnlyTextColor,
     this.filled = false,
     this.enabledFillColor,
     this.readOnlyFillColor,
@@ -36,8 +35,7 @@ class FyTextFormFieldSetup {
     bool? filled,
     Color? enabledFillColor,
     Color? readOnlyFillColor,
-  }) {
-    return FyTextFormFieldSetup(
+  }) => FyTextFormFieldSetup(
       titleStyle: titleStyle ?? this.titleStyle,
       cursorTextStyle: cursorTextStyle ?? this.cursorTextStyle,
       validationMessages: validationMessages ?? this.validationMessages,
@@ -48,5 +46,4 @@ class FyTextFormFieldSetup {
       enabledFillColor: enabledFillColor ?? this.enabledFillColor,
       readOnlyFillColor: readOnlyFillColor ?? this.readOnlyFillColor,
     );
-  }
 }

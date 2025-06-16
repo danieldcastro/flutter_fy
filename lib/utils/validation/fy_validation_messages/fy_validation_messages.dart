@@ -1,4 +1,4 @@
-import 'package:flutter_fy/utils/enums/validation_messages_enum.dart';
+import '../../enums/validation_messages_enum.dart';
 
 class FyValidationMessages {
   final Map<ValidationMessagesEnum, String> messages;
@@ -27,9 +27,7 @@ class FyValidationMessages {
   String? operator [](ValidationMessagesEnum key) => messages[key];
 
   FyValidationMessages copyWith(
-      Map<ValidationMessagesEnum, String> newMessages) {
-    return FyValidationMessages(
+      Map<ValidationMessagesEnum, String> newMessages) => FyValidationMessages(
       messages: {...messages, ...newMessages},
     );
-  }
 }

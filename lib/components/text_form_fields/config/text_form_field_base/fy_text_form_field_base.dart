@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/loadings/loading_rotating_dots/fy_loading_rotating_dots.dart';
-import 'package:flutter_fy/utils/fy_responsive_modals.dart';
-import 'package:flutter_fy/utils/validation/fy_validations.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../utils/extensions/string_extensions/string_extensions.dart';
+import '../../../../utils/fy_responsive_modals.dart';
 import '../../../../utils/result/result.dart';
+import '../../../../utils/validation/fy_validations.dart';
 import '../../../fy_scroll_view/fy_scroll_view.dart';
+import '../../../loadings/loading_rotating_dots/fy_loading_rotating_dots.dart';
 import '../text_form_field_config/fy_text_form_field_config.dart';
 import '../text_form_field_setup/fy_text_form_field_setup.dart';
 
@@ -35,11 +35,11 @@ class FyTextFormFieldBase extends StatefulWidget {
 
   const FyTextFormFieldBase(
     this.config, {
+    required this.keyboardType,
     super.key,
     this.textCapitalization = TextCapitalization.none,
     this.validators,
     this.inputFormatters,
-    required this.keyboardType,
     this.maxLength,
     this.maxLines = 1,
     this.onTap,
@@ -68,10 +68,10 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
 
   void _handleFocusChange() {
     if (widget.config.onFocusChanged != null) {
-      widget.config.onFocusChanged!(_focusNode.hasFocus);
+      widget.config.onFocusChanged?.call(_focusNode.hasFocus);
     }
     if (!_focusNode.hasFocus) {
-      String? validationResult = _validator(_text, requestFocus: false);
+      final String? validationResult = _validator(_text, requestFocus: false);
       setState(() {
         _errorText = validationResult;
       });
@@ -89,7 +89,7 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
         value.isNullOrEmpty) {
       return null;
     } else {
-      String? validation = FyValidations.multiple([
+      final String? validation = FyValidations.multiple([
         if (widget.config.isRequired)
           () => FyValidations.isRequired(
               value.isNullOrEmpty
@@ -117,33 +117,32 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
     }
   }
 
-  Widget _switchHelpTextIcon(Result<String, IconData>? icon) {
-    return icon?.fold(
-            (string) => switch (string.isSVG) {
-                  true => SvgPicture.asset(string,
-                      height: 24,
-                      width: 24,
-                      colorFilter: ColorFilter.mode(
-                          widget.config.fyTextFormFieldSetup.helpTextSetup
-                                  ?.iconColor ??
-                              Colors.black,
-                          BlendMode.srcIn)),
-                  false => Image.asset(string,
-                      height: 24,
-                      width: 24,
-                      color: widget.config.fyTextFormFieldSetup.helpTextSetup
-                              ?.iconColor ??
-                          Colors.black),
-                },
-            (iconData) => Icon(
-                  iconData,
-                  size: 24,
-                  color: widget.config.fyTextFormFieldSetup.helpTextSetup
-                          ?.iconColor ??
-                      Colors.black,
-                )) ??
-        const SizedBox.shrink();
-  }
+  Widget _switchHelpTextIcon(Result<String, IconData>? icon) =>
+      icon?.fold(
+          (string) => switch (string.isSVG) {
+                true => SvgPicture.asset(string,
+                    height: 24,
+                    width: 24,
+                    colorFilter: ColorFilter.mode(
+                        widget.config.fyTextFormFieldSetup.helpTextSetup
+                                ?.iconColor ??
+                            Colors.black,
+                        BlendMode.srcIn)),
+                false => Image.asset(string,
+                    height: 24,
+                    width: 24,
+                    color: widget.config.fyTextFormFieldSetup.helpTextSetup
+                            ?.iconColor ??
+                        Colors.black),
+              },
+          (iconData) => Icon(
+                iconData,
+                size: 24,
+                color: widget
+                        .config.fyTextFormFieldSetup.helpTextSetup?.iconColor ??
+                    Colors.black,
+              )) ??
+      const SizedBox.shrink();
 
   void _showHelpText() {
     final helpTextSetup = widget.config.fyTextFormFieldSetup.helpTextSetup;
@@ -161,7 +160,6 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 _switchHelpTextIcon(helpTextSetup?.icon),
@@ -196,7 +194,7 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
           _text = value;
         });
         if (widget.config.onChanged != null) {
-          widget.config.onChanged!(value);
+          widget.config.onChanged?.call(value);
         }
       },
       onEditingComplete: widget.config.onEditingComplete,
@@ -250,8 +248,9 @@ class _FyTextFormFieldBaseState extends State<FyTextFormFieldBase> {
 
   @override
   void dispose() {
-    _focusNode.removeListener(_handleFocusChange);
-    _focusNode.dispose();
+    _focusNode
+      ..removeListener(_handleFocusChange)
+      ..dispose();
     widget.config.controller?.clear();
     super.dispose();
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/utils/extensions/list_extensions/list_extensions.dart';
+import '../extensions/list_extensions/list_extensions.dart';
 
 import '../extensions/string_extensions/string_extensions.dart';
 import 'fy_validation_messages/fy_validation_messages.dart';
@@ -14,14 +14,14 @@ class FyValidationTypes {
     List<ValueGetter<String?>>? validators,
     List<String? Function(String? value)>? customValidators,
   ]) {
-    List<ValueGetter<String?>> localValidators = validators ?? [];
+    final List<ValueGetter<String?>> localValidators = validators ?? [];
     if (requestValidators != null) {
-      for (var validator in requestValidators) {
+      for (final validator in requestValidators) {
         localValidators.add(() => validator(value));
       }
     }
     if (customValidators != null) {
-      for (var validator in customValidators) {
+      for (final validator in customValidators) {
         localValidators.add(() => validator(value));
       }
     }
@@ -31,21 +31,18 @@ class FyValidationTypes {
   static ValidatorsCallBack email(
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [() => FyValidations.isEmail(value, messages.invalidEmail)],
         );
-  }
 
   static ValidatorsCallBack password(
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
     int minLength,
     List<String? Function(String? value)>? customValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
@@ -58,7 +55,6 @@ class FyValidationTypes {
           ],
           customValidators,
         );
-  }
 
   static ValidatorsCallBack currency(
     FyValidationMessages messages,
@@ -66,8 +62,7 @@ class FyValidationTypes {
     double? numValueMinMatching,
     double? numValueMaxMatching,
     bool isRequired,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
@@ -88,45 +83,37 @@ class FyValidationTypes {
                   ),
           ],
         );
-  }
 
   static ValidatorsCallBack onlyRequests(
     List<String? Function(String? value)>? requestValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(value, requestValidators);
-  }
+  ) => (String? value) => _buildValidatorsList(value, requestValidators);
 
   static ValidatorsCallBack cpf(
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
             () => FyValidations.isCpf(value, messages.invalidCpf),
           ],
         );
-  }
 
   static ValidatorsCallBack cnpj(
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
             () => FyValidations.isCnpj(value, messages.invalidCnpj),
           ],
         );
-  }
 
   static ValidatorsCallBack cpfCnpj(
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
@@ -134,13 +121,11 @@ class FyValidationTypes {
                 value, messages.invalidCpf, messages.invalidCnpj),
           ],
         );
-  }
 
   static ValidatorsCallBack phoneCellphone(
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
@@ -148,13 +133,11 @@ class FyValidationTypes {
                 value?.removeNonDigits, 10, messages.invalidNumber),
           ],
         );
-  }
 
   static ValidatorsCallBack cep(
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
@@ -162,13 +145,11 @@ class FyValidationTypes {
                 value?.removeNonDigits, 8, messages.invalidCep),
           ],
         );
-  }
 
   static ValidatorsCallBack rg(
     FyValidationMessages messages,
     List<String? Function(String? value)>? requestValidators,
-  ) {
-    return (String? value) => _buildValidatorsList(
+  ) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
@@ -176,7 +157,6 @@ class FyValidationTypes {
                 value?.removeSpecialCharacters, 4, messages.invalidRg),
           ],
         );
-  }
 
   static ValidatorsCallBack date(
     FyValidationMessages messages,
@@ -184,8 +164,7 @@ class FyValidationTypes {
     required int maxPastYears,
     required int minPastYears,
     required int maxFutureYears,
-  }) {
-    return (String? value) => _buildValidatorsList(
+  }) => (String? value) => _buildValidatorsList(
           value,
           requestValidators,
           [
@@ -198,5 +177,4 @@ class FyValidationTypes {
                 ),
           ],
         );
-  }
 }

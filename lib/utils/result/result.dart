@@ -84,9 +84,7 @@ class Right<L extends Object, R extends Object?> implements Result<L, R> {
   Result<L, R> onLeft(void Function(L left) action) => this;
 
   @override
-  Result<L, T> map<T extends Object?>(T Function(R right) fn) {
-    return Right<L, T>(fn(_rightValue));
-  }
+  Result<L, T> map<T extends Object?>(T Function(R right) fn) => Right<L, T>(fn(_rightValue));
 
   @override
   int get hashCode => _rightValue.hashCode;
@@ -136,9 +134,7 @@ class Left<L extends Object, R extends Object?> implements Result<L, R> {
   }
 
   @override
-  Result<L, T> map<T extends Object?>(T Function(R right) fn) {
-    return Left<L, T>(_leftValue);
-  }
+  Result<L, T> map<T extends Object?>(T Function(R right) fn) => Left<L, T>(_leftValue);
 
   @override
   int get hashCode => _leftValue.hashCode;

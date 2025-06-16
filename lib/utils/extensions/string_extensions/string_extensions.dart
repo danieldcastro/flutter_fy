@@ -1,6 +1,7 @@
 import 'package:diacritic/diacritic.dart';
-import 'package:flutter_fy/utils/enums/fy_locales/fy_locales.dart';
 import 'package:intl/intl.dart';
+
+import '../../enums/fy_locales/fy_locales.dart';
 
 extension StringExtensions on String {
   /// Extensão para a classe String que capitaliza cada palavra na string.
@@ -65,9 +66,9 @@ extension StringExtensions on String {
   /// ```
   String get removeDiacriticsAndSpacesToLowerCase {
     if (isNotEmpty) {
-      String withoutDiacritics = removeDiacritics(this);
+      final String withoutDiacritics = removeDiacritics(this);
 
-      String withoutSpaces = withoutDiacritics.replaceAll(' ', '');
+      final String withoutSpaces = withoutDiacritics.replaceAll(' ', '');
 
       return withoutSpaces.toLowerCase();
     }
@@ -86,7 +87,7 @@ extension StringExtensions on String {
   /// ```
   String get formatBrDocument {
     if (isNotEmpty) {
-      String cleanedDocument =
+      final String cleanedDocument =
           replaceAll(RegExp(r'[^0-9Xx]'), '').toUpperCase();
 
       return switch (cleanedDocument.length) {
@@ -275,10 +276,10 @@ extension StringExtensions on String {
   /// ```
   String get prepareCurrencyForParsing {
     if (isNotEmpty) {
-      int firstIndexNumber = indexOf(RegExp(r'[0-9]'), 0);
+      final int firstIndexNumber = indexOf(RegExp(r'[0-9]'));
 
       if (firstIndexNumber != -1) {
-        String preparedValue = trim()
+        final String preparedValue = trim()
             .substring(firstIndexNumber)
             .replaceAll('.', '')
             .replaceAll(',', '.');

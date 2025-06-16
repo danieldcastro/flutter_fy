@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
-import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
+
+import '../../../utils/validation/fy_validation_types.dart';
+import '../config/text_form_field_base/fy_text_form_field_base.dart';
 
 class FyFieldName extends FyTextFormFieldBase {
   FyFieldName(

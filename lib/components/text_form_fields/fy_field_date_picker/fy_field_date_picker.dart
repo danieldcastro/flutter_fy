@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_config/fy_text_form_field_config.dart';
 import 'package:intl/intl.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+
+import '../config/text_form_field_base/fy_text_form_field_base.dart';
+import '../config/text_form_field_config/fy_text_form_field_config.dart';
 
 class FyFieldDatePicker extends StatelessWidget {
   final DateTime firstDate;
@@ -15,20 +16,14 @@ class FyFieldDatePicker extends StatelessWidget {
   final FyTextFormFieldConfig config;
 
   const FyFieldDatePicker({
-    super.key,
-    required this.firstDate,
-    required this.lastDate,
-    required this.onSelectDate,
-    required this.controller,
-    required this.config,
+    required this.firstDate, required this.lastDate, required this.onSelectDate, required this.controller, required this.config, super.key,
     this.initialDate,
     this.initialDatePickerMode = DatePickerMode.day,
     this.initialEntryMode = DatePickerEntryMode.calendarOnly,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return FyTextFormFieldBase(
+  Widget build(BuildContext context) => FyTextFormFieldBase(
       config.copyWith(
         suffixIcon: Padding(
           padding: const EdgeInsets.only(right: 16),
@@ -40,7 +35,7 @@ class FyFieldDatePicker extends StatelessWidget {
         ),
       ),
       onTap: (context) async {
-        DateFormat dateFormat = DateFormat('dd/MM/yyyy');
+        final DateFormat dateFormat = DateFormat('dd/MM/yyyy');
         final selectedDate = dateFormat.tryParseStrict(controller.text);
         DateTime dateWithoutTime(DateTime date) =>
             DateTime(date.year, date.month, date.day);
@@ -66,7 +61,5 @@ class FyFieldDatePicker extends StatelessWidget {
         return pickedDate;
       },
       keyboardType: TextInputType.datetime,
-      maxLines: 1,
     );
-  }
 }

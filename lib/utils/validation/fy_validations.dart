@@ -7,9 +7,7 @@ import 'cpf_validator/cpf_validator.dart';
 
 typedef ValidatorsCallBack = List<ValueGetter<String?>> Function(String? value);
 
-bool _hasMatch(String? value, String pattern) {
-  return value != null && RegExp(pattern).hasMatch(value);
-}
+bool _hasMatch(String? value, String pattern) => value != null && RegExp(pattern).hasMatch(value);
 
 class FyValidations {
   FyValidations._();
@@ -40,37 +38,25 @@ class FyValidations {
           ? null
           : message;
 
-  static String? min(String? value, int min, String? message) {
-    return (value ?? '').validateLength(min) ? null : message;
-  }
+  static String? min(String? value, int min, String? message) => (value ?? '').validateLength(min) ? null : message;
 
-  static String? isTrimmed(String? value, String? message) {
-    return (value?.startsWith(' ') ?? true) || (value?.endsWith(' ') ?? true)
+  static String? isTrimmed(String? value, String? message) => (value?.startsWith(' ') ?? true) || (value?.endsWith(' ') ?? true)
         ? message
         : null;
-  }
 
   static String? numValueMinMatching(
-      String? value, num pattern, String? message) {
-    return ((double.tryParse(value ?? '') ?? 0) < pattern) ? message : null;
-  }
+      String? value, num pattern, String? message) => ((double.tryParse(value ?? '') ?? 0) < pattern) ? message : null;
 
   static String? numValueMaxMatching(
-      String? value, num pattern, String? message) {
-    return ((double.tryParse(value ?? '') ?? 0) > pattern) ? message : null;
-  }
+      String? value, num pattern, String? message) => ((double.tryParse(value ?? '') ?? 0) > pattern) ? message : null;
 
-  static String? isCpf(String? value, String? message) {
-    return (value?.isEmpty ?? true) || CpfValidator.isValid(value ?? '')
+  static String? isCpf(String? value, String? message) => (value?.isEmpty ?? true) || CpfValidator.isValid(value ?? '')
         ? null
         : message;
-  }
 
-  static String? isCnpj(String? value, String? message) {
-    return (value?.isEmpty ?? true) || CnpjValidator.isValid(value ?? '')
+  static String? isCnpj(String? value, String? message) => (value?.isEmpty ?? true) || CnpjValidator.isValid(value ?? '')
         ? null
         : message;
-  }
 
   static String? isCpfOrCnpj(
       String? value, String? messageCpf, String? messageCnpj) {
@@ -114,12 +100,12 @@ class FyValidations {
     ) {
       assert(maxPastYears > minPastYears,
           'A data máxima deve ser maior que a mínima');
-      DateTime currentDate = DateTime.now();
-      DateTime maxPastDate =
+      final DateTime currentDate = DateTime.now();
+      final DateTime maxPastDate =
           currentDate.subtract(Duration(days: maxPastYears * 365));
-      DateTime minPastDate =
+      final DateTime minPastDate =
           currentDate.subtract(Duration(days: minPastYears * 365));
-      DateTime maxFutureDate =
+      final DateTime maxFutureDate =
           currentDate.add(Duration(days: maxFutureYears * 365));
 
       if (date.isAfter(maxFutureDate) ||
@@ -130,8 +116,8 @@ class FyValidations {
       return true;
     }
 
-    DateFormat dateFormat = DateFormat('dd/MM/yyyy');
-    DateFormat dateFormatWithoutDay = DateFormat('MM/yyyy');
+    final DateFormat dateFormat = DateFormat('dd/MM/yyyy');
+    final DateFormat dateFormatWithoutDay = DateFormat('MM/yyyy');
     DateTime? parsedDate;
 
     parsedDate = dateFormat.tryParseStrict(value!) ??

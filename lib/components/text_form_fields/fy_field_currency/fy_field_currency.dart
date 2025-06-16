@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_config/fy_text_form_field_config.dart';
-import 'package:flutter_fy/utils/enums/fy_locales/fy_locales.dart';
-import 'package:flutter_fy/utils/input_formatters/decimal_text_input_formatter/fy_decimal_text_input_formatter.dart';
-import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
+
+import '../../../utils/enums/fy_locales/fy_locales.dart';
+import '../../../utils/input_formatters/decimal_text_input_formatter/fy_decimal_text_input_formatter.dart';
+import '../../../utils/validation/fy_validation_types.dart';
+import '../config/text_form_field_base/fy_text_form_field_base.dart';
+import '../config/text_form_field_config/fy_text_form_field_config.dart';
 
 class FyFieldCurrency extends StatefulWidget {
   final FyTextFormFieldConfig config;
@@ -35,8 +36,9 @@ class _FyFieldCurrencyState extends State<FyFieldCurrency> {
   void initState() {
     super.initState();
     _controller = widget.config.controller ?? TextEditingController();
-    _controller.text = widget.config.initialValue ?? widget.locale.emptyValue;
-    _controller.addListener(_keepEmpty);
+    _controller
+      ..text = widget.config.initialValue ?? widget.locale.emptyValue
+      ..addListener(_keepEmpty);
   }
 
   void _keepEmpty() {
@@ -55,34 +57,32 @@ class _FyFieldCurrencyState extends State<FyFieldCurrency> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return FyTextFormFieldBase(
-      widget.config.copyWith(
-        controller: _controller,
-        prefix: Text(
-          '${widget.locale.symbol} ',
-          style: widget.config.fyTextFormFieldSetup.cursorTextStyle.copyWith(
-              color: widget.config.isReadOnly
-                  ? widget.config.fyTextFormFieldSetup.readOnlyTextColor
-                  : null),
+  Widget build(BuildContext context) => FyTextFormFieldBase(
+        widget.config.copyWith(
+          controller: _controller,
+          prefix: Text(
+            '${widget.locale.symbol} ',
+            style: widget.config.fyTextFormFieldSetup.cursorTextStyle.copyWith(
+                color: widget.config.isReadOnly
+                    ? widget.config.fyTextFormFieldSetup.readOnlyTextColor
+                    : null),
+          ),
         ),
-      ),
-      maxLength: widget.maxLength,
-      keyboardType: TextInputType.number,
-      inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly,
-        FyDecimalTextInputFormatter(
-          currencySymbol: widget.locale.symbol,
-          decimalDigits: widget.decimalDigits,
+        maxLength: widget.maxLength,
+        keyboardType: TextInputType.number,
+        inputFormatters: [
+          FilteringTextInputFormatter.digitsOnly,
+          FyDecimalTextInputFormatter(
+            currencySymbol: widget.locale.symbol,
+            decimalDigits: widget.decimalDigits,
+          ),
+        ],
+        validators: FyValidationTypes.currency(
+          widget.config.fyTextFormFieldSetup.validationMessages,
+          widget.config.requestValidators,
+          widget.numValueMinMatching,
+          widget.numValueMaxMatching,
+          widget.config.isRequired,
         ),
-      ],
-      validators: FyValidationTypes.currency(
-        widget.config.fyTextFormFieldSetup.validationMessages,
-        widget.config.requestValidators,
-        widget.numValueMinMatching,
-        widget.numValueMaxMatching,
-        widget.config.isRequired,
-      ),
-    );
-  }
+      );
 }

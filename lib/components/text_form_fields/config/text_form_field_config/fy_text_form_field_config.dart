@@ -60,8 +60,7 @@ class FyTextFormFieldConfig {
   final bool isRequired;
 
   FyTextFormFieldConfig({
-    this.obscuringCharacter = '•',
-    required this.fyTextFormFieldSetup,
+    required this.fyTextFormFieldSetup, this.obscuringCharacter = '•',
     this.helpTextConfigs,
     this.hintText,
     this.title,
@@ -118,8 +117,7 @@ class FyTextFormFieldConfig {
     double? prefixIconMaxWidth,
     Widget? prefixIcon,
     Widget? prefix,
-  }) {
-    return FyTextFormFieldConfig(
+  }) => FyTextFormFieldConfig(
       fyTextFormFieldSetup: fyTextFormFieldSetup ?? this.fyTextFormFieldSetup,
       hintText: hintText ?? this.hintText,
       title: title ?? this.title,
@@ -146,5 +144,4 @@ class FyTextFormFieldConfig {
       prefixIcon: prefixIcon ?? this.prefixIcon,
       prefix: prefix ?? this.prefix,
     );
-  }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/components/modals/side_sheet/config/fy_side_sheet_config.dart';
+import 'config/fy_side_sheet_config.dart';
 
 class FySideSheet {
   /// Private method to open the side sheet based on the provided configuration.
@@ -9,7 +9,7 @@ class FySideSheet {
     required FySideSheetConfig config,
     required bool rightSide,
   }) async {
-    dynamic data = await _showSheetSide(
+    final dynamic data = await _showSheetSide(
       body: body,
       config: config,
       rightSide: rightSide,
@@ -32,14 +32,12 @@ class FySideSheet {
     required Widget body,
     required BuildContext context,
     FySideSheetConfig config = const FySideSheetConfig(),
-  }) async {
-    return await _open(
+  }) async => _open(
       body: body,
       context: context,
       config: config,
       rightSide: false,
     );
-  }
 
   /// Opens the side sheet on the right side.
   ///
@@ -55,14 +53,12 @@ class FySideSheet {
     required Widget body,
     required BuildContext context,
     FySideSheetConfig config = const FySideSheetConfig(),
-  }) async {
-    return await _open(
+  }) async => _open(
       body: body,
       context: context,
       config: config,
       rightSide: true,
     );
-  }
 
   /// Internal method that displays the side sheet based on the provided configuration.
   static Future<T?> _showSheetSide<T>({
@@ -72,7 +68,7 @@ class FySideSheet {
     required BuildContext context,
   }) {
     // Define the border radius to round only the corresponding side.
-    BorderRadius borderRadius = BorderRadius.only(
+    final BorderRadius borderRadius = BorderRadius.only(
       topLeft:
           rightSide ? Radius.circular(config.sheetBorderRadius) : Radius.zero,
       bottomLeft:
@@ -89,8 +85,7 @@ class FySideSheet {
       barrierColor: config.barrierColor,
       transitionDuration: config.transitionDuration,
       context: context,
-      pageBuilder: (context, animation1, animation2) {
-        return Align(
+      pageBuilder: (context, animation1, animation2) => Align(
           alignment: rightSide ? Alignment.centerRight : Alignment.centerLeft,
           child: Material(
             elevation: 15,
@@ -106,17 +101,14 @@ class FySideSheet {
               child: body,
             ),
           ),
-        );
-      },
-      transitionBuilder: (context, animation1, animation2, child) {
-        return SlideTransition(
+        ),
+      transitionBuilder: (context, animation1, animation2, child) => SlideTransition(
           position: Tween(
             begin: Offset(rightSide ? 1 : -1, 0),
             end: Offset.zero,
           ).animate(animation1),
           child: child,
-        );
-      },
+        ),
     );
   }
 }

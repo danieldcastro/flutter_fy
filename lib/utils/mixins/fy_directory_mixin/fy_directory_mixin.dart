@@ -1,8 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_fy/utils/fy_platform.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../fy_platform.dart';
 
 /// Mixin que fornece um método para obter o diretório adequado conforme a plataforma.
 ///

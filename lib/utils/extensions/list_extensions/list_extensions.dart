@@ -27,11 +27,9 @@ extension ListExtensions on List {
   /// ```
   ///
   /// Onde `MyClass.fromMap` é um método que converte um `Map<String, dynamic>` em uma instância de `MyClass`.
-  List<T> deserializeList<T>(T Function(Map<String, dynamic>) fromMap) {
-    return List.castFrom<dynamic, Map<String, dynamic>>(this)
+  List<T> deserializeList<T>(T Function(Map<String, dynamic>) fromMap) => List.castFrom<dynamic, Map<String, dynamic>>(this)
         .map(fromMap)
         .toList();
-  }
 }
 
 extension ListExtensionsNullable on List? {

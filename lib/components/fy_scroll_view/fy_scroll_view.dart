@@ -1,7 +1,7 @@
 library;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/utils/fy_platform.dart';
+import '../../utils/fy_platform.dart';
 
 class FyScrollView extends StatefulWidget {
   final Widget child;
@@ -13,8 +13,7 @@ class FyScrollView extends StatefulWidget {
   final bool reverse;
 
   const FyScrollView({
-    super.key,
-    required this.child,
+    required this.child, super.key,
     this.padding,
     this.onForceScrollToTop,
     this.loadMoreFunction,
@@ -60,8 +59,7 @@ class FyScrollViewState extends State<FyScrollView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return FyPlatform.isMobile
+  Widget build(BuildContext context) => FyPlatform.isMobile
         ? _buildScroll()
         : Scrollbar(
             controller: _controller,
@@ -69,15 +67,12 @@ class FyScrollViewState extends State<FyScrollView> {
             thumbVisibility: true,
             child: _buildScroll(),
           );
-  }
 
-  Widget _buildScroll() {
-    return SingleChildScrollView(
+  Widget _buildScroll() => SingleChildScrollView(
       controller: _controller,
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       padding: widget.padding,
       reverse: widget.reverse,
       child: widget.child,
     );
-  }
 }

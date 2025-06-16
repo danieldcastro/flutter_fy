@@ -1,5 +1,6 @@
-import 'package:flutter_fy/utils/enums/fy_locales/fy_locales.dart';
 import 'package:intl/intl.dart';
+
+import '../../enums/fy_locales/fy_locales.dart';
 
 extension DateTimeExtensions on DateTime {
   /// Extensão para a classe DateTime que formata a data como uma string.

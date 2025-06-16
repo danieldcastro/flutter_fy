@@ -15,11 +15,7 @@ class FyToggleSlider extends StatelessWidget {
   final Color disabledColor;
 
   const FyToggleSlider({
-    super.key,
-    required this.onChanged,
-    required this.value,
-    required this.leftWidget,
-    required this.rightWidget,
+    required this.onChanged, required this.value, required this.leftWidget, required this.rightWidget, super.key,
     this.height = 40,
     this.backgroundBorderRadius,
     this.backgroundBorder,
@@ -31,8 +27,7 @@ class FyToggleSlider extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
+  Widget build(BuildContext context) => MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: onChanged == null ? null : () => onChanged!(!value),
@@ -85,10 +80,8 @@ class FyToggleSlider extends StatelessWidget {
         ),
       ),
     );
-  }
 
-  Widget _buildOption(Widget child, bool isSelected, bool isLeft) {
-    return Expanded(
+  Widget _buildOption(Widget child, bool isSelected, bool isLeft) => Expanded(
       child: AnimatedAlign(
         duration: const Duration(milliseconds: 375),
         curve: Curves.ease,
@@ -103,5 +96,4 @@ class FyToggleSlider extends StatelessWidget {
         ),
       ),
     );
-  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
-import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 
+import '../../../utils/validation/fy_validation_types.dart';
+import '../config/text_form_field_base/fy_text_form_field_base.dart';
 import '../config/text_form_field_config/fy_text_form_field_config.dart';
 
 class FyFieldPassword extends StatefulWidget {
@@ -27,8 +27,7 @@ class FyFieldPassword extends StatefulWidget {
 
 class _FyFieldPasswordState extends State<FyFieldPassword> {
   @override
-  Widget build(BuildContext context) {
-    return FyTextFormFieldBase(widget.config,
+  Widget build(BuildContext context) => FyTextFormFieldBase(widget.config,
         keyboardType: TextInputType.visiblePassword,
         validators: FyValidationTypes.password(
           widget.config.fyTextFormFieldSetup.validationMessages,
@@ -36,5 +35,4 @@ class _FyFieldPasswordState extends State<FyFieldPassword> {
           widget.minLength,
           widget.customValidators,
         ));
-  }
 }

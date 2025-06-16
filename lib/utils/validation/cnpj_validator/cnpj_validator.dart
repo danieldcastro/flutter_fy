@@ -20,20 +20,20 @@ class CnpjValidator {
   /// Calcula o dígito verificador do CNPJ.
   static int _verifierDigit(String cnpj) {
     int index = 2;
-    List<int> reverse =
+    final List<int> reverse =
         cnpj.split('').map(int.parse).toList().reversed.toList();
     int sum = 0;
-    for (var number in reverse) {
+    for (final number in reverse) {
       sum += number * index;
       index = (index == 9 ? 2 : index + 1);
     }
-    int mod = sum % 11;
+    final int mod = sum % 11;
     return (mod < 2 ? 0 : 11 - mod);
   }
 
   /// Remove caracteres não numéricos do CNPJ.
   static String strip(String cnpj) {
-    RegExp regex = RegExp(stripRegex);
+    final RegExp regex = RegExp(stripRegex);
     return cnpj.replaceAll(regex, '');
   }
 

@@ -7,7 +7,7 @@ import 'config/fy_dropdown_config.dart';
 class FyDropdown<T> extends StatefulWidget {
   final FyDropdownConfig<T> config;
   final List<T> values;
-  const FyDropdown({super.key, required this.values, required this.config});
+  const FyDropdown({required this.values, required this.config, super.key});
 
   @override
   State<FyDropdown<T>> createState() => _FyDropdownState<T>();
@@ -33,7 +33,7 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
 
   void _handleFocusChange() {
     if (!_focusNode.hasFocus) {
-      String? validationResult =
+      final String? validationResult =
           _validator(_selectedValue, requestFocus: false);
       setState(() {
         _errorText = validationResult;
@@ -51,7 +51,7 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
         value == null) {
       return null;
     } else {
-      String? validation = FyValidations.multiple([
+      final String? validation = FyValidations.multiple([
         if (widget.config.isRequired)
           () => FyValidations.isRequired(
               _formattedText(value ?? widget.config.initialValue),
@@ -82,8 +82,9 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
 
   @override
   void dispose() {
-    _focusNode.removeListener(_handleFocusChange);
-    _focusNode.dispose();
+    _focusNode
+      ..removeListener(_handleFocusChange)
+      ..dispose();
     super.dispose();
   }
 
@@ -148,7 +149,6 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
               dropdownColor: widget.config.fyDropdownSetup.dropdownColor,
               value: widget.config.initialValue,
               validator: _validator,
-              isDense: true,
               isExpanded: true,
               menuMaxHeight: widget.config.menuMaxHeight,
               alignment: Alignment.centerLeft,
@@ -173,9 +173,7 @@ class _FyDropdownState<T> extends State<FyDropdown<T>> {
                         _selectedValue = value;
                       });
 
-                      if (widget.config.onChanged != null) {
-                        widget.config.onChanged!(value);
-                      }
+                      widget.config.onChanged?.call(value);
                     },
             ),
           )

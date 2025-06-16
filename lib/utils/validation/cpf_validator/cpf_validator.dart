@@ -19,24 +19,24 @@ class CpfValidator {
   static const stripRegex = r'[^\d]';
 
   static int _verifierDigit(String cpf) {
-    List<int> numbers =
+    final List<int> numbers =
         cpf.split('').map((number) => int.parse(number, radix: 10)).toList();
-    int modulus = numbers.length + 1;
-    List<int> multiplied = [];
+    final int modulus = numbers.length + 1;
+    final List<int> multiplied = [];
     for (var i = 0; i < numbers.length; i++) {
       multiplied.add(numbers[i] * (modulus - i));
     }
-    int mod = multiplied.reduce((buffer, number) => buffer + number) % 11;
+    final int mod = multiplied.reduce((buffer, number) => buffer + number) % 11;
     return (mod < 2 ? 0 : 11 - mod);
   }
 
   static String strip(String cpf) {
-    RegExp regExp = RegExp(stripRegex);
+    final RegExp regExp = RegExp(stripRegex);
     return cpf.replaceAll(regExp, '');
   }
 
   static bool isValid(String cpf, [bool stripBeforeValidation = true]) {
-    String cpfToValidate = stripBeforeValidation ? strip(cpf) : cpf;
+    final String cpfToValidate = stripBeforeValidation ? strip(cpf) : cpf;
 
     if (cpfToValidate.isEmpty ||
         cpfToValidate.length != cpfLength ||

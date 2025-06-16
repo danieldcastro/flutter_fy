@@ -12,11 +12,9 @@ class _DrawDot extends StatelessWidget {
         height = dotSize;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) => Container(
       width: width,
       height: height,
       decoration: BoxDecoration(color: color, shape: BoxShape.circle),
     );
-  }
 }

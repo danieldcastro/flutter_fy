@@ -42,8 +42,7 @@ class FyDropdownSetup {
       Color iconColor,
       Color disabledIconColor,
     })? dropDownIconConfigs,
-  }) {
-    return FyDropdownSetup(
+  }) => FyDropdownSetup(
       disabledColor: disabledColor ?? this.disabledColor,
       disabledTextColor: disabledTextColor ?? this.disabledTextColor,
       titleStyle: titleStyle ?? this.titleStyle,
@@ -54,5 +53,4 @@ class FyDropdownSetup {
       dropDownIconConfigs: dropDownIconConfigs ?? this.dropDownIconConfigs,
       decoration: decoration ?? this.decoration,
     );
-  }
 }

@@ -9,9 +9,8 @@ class FyLoadingRotatingDots extends StatefulWidget {
   final Color color;
 
   const FyLoadingRotatingDots({
-    super.key,
+    required this.color, super.key,
     this.size = 30,
-    required this.color,
   });
 
   @override

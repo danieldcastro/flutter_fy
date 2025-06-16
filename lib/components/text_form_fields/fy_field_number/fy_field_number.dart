@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_fy/components/text_form_fields/config/text_form_field_base/fy_text_form_field_base.dart';
-import 'package:flutter_fy/utils/validation/fy_validation_types.dart';
 
+import '../../../utils/validation/fy_validation_types.dart';
+import '../config/text_form_field_base/fy_text_form_field_base.dart';
 import '../config/text_form_field_config/fy_text_form_field_config.dart';
 
 class FyFieldNumber extends StatelessWidget {
@@ -15,9 +15,7 @@ class FyFieldNumber extends StatelessWidget {
   }) : super();
 
   @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return FyTextFormFieldBase(
+  Widget build(BuildContext context) => LayoutBuilder(builder: (context, constraints) => FyTextFormFieldBase(
         config.copyWith(
           suffixIcon: suffix,
           suffixIconMaxWidth: constraints.maxWidth / 2,
@@ -30,7 +28,5 @@ class FyFieldNumber extends StatelessWidget {
         validators: FyValidationTypes.onlyRequests(
           config.requestValidators,
         ),
-      );
-    });
-  }
+      ));
 }

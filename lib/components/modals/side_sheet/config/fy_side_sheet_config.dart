@@ -10,7 +10,7 @@ class FySideSheetConfig {
   final double? width;
 
   const FySideSheetConfig({
-    this.barrierLabel = "Side Sheet",
+    this.barrierLabel = 'Side Sheet',
     this.barrierDismissible = true,
     this.barrierColor = const Color(0x66000000),
     this.sheetBorderRadius = 0,
