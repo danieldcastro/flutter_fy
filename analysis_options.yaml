@@ -5,7 +5,23 @@ analyzer:
     fixme: warning
     invalid_use_of_visible_for_testing_member: error
 
+  plugins:
+    - custom_lint  
+
 include: package:flutter_lints/flutter.yaml
+
+custom_lint:
+  enable_all_lint_rules: false
+  rules:
+    - fixed_text_scale_rich_text: true
+    - defined_void_callback_type: true
+    - defined_value_setter_type: true
+    - defined_value_getter_type: true
+    - defined_value_changed_type: true
+    - defined_async_value_setter_type: true
+    - defined_async_value_getter_type: true
+    - defined_async_callback_type: true
+
 
 linter:
   rules:
