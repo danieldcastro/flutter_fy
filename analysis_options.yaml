@@ -68,3 +68,4 @@ linter:
     - no_literal_bool_comparisons
     - unnecessary_breaks
     - matching_super_parameters
+    - unawaited_futures
